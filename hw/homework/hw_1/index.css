@@ -1,0 +1,45 @@
+body {
+	background-color: Khaki;
+}
+
+h1 {
+	font-family: "Century Gothic", Futura, Verdana;
+	font-size: 10em;
+	text-align: center;
+	background-color: #F0F0F0;
+	color: #A4A400;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+#p1 {
+	font-family: "Century Gothic", Futura, Verdana;
+	text-align: center;
+	color: #A4A400;
+	font-size: 2em;
+	margin-bottom: 0px;
+}
+
+#p2 {
+	font-family: "Century Gothic", Futura, Verdana;
+	color: #A4A400;
+	text-align: center;
+	background-color: lightBlue;
+	font-size: 1.5em;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+#p3 {
+	font-family: "Century Gothic", Futura, Verdana;
+	color: #008000;
+	text-align: center;
+	font-size: 1.4em;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+img {
+	margin-left: 34em;
+	margin-top: 0px; 
+}
