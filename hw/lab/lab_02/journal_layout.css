@@ -1,0 +1,40 @@
+body {
+	background-image: url(images/background.gif);
+	margin-left: 10%;
+	margin-right: 10%;
+	/*背景间距问题未决*/
+}
+
+.green {
+	border: 5px green solid;
+	background-color: white;
+}
+
+.red {
+	border: 5px red solid;
+	text-align: right;
+}
+
+.yellow {
+	border: 5px yellow solid; 
+}
+
+.blue {
+	border: 5px blue solid;
+	background-color: #E8FBFB;
+		margin-top: 10px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	padding: 5px;
+}
+
+.blue img {
+	float: right;
+}
+
+.purple {
+	border: 5px purple solid;
+}
+
+
