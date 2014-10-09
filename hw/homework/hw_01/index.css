@@ -4,7 +4,7 @@ body {
 
 h1 {
 	font-family: "Century Gothic", Futura, Verdana;
-	font-size: 10em;
+	font-size: 5em;
 	text-align: center;
 	background-color: #F0F0F0;
 	color: #A4A400;
@@ -15,8 +15,9 @@ h1 {
 #p1 {
 	font-family: "Century Gothic", Futura, Verdana;
 	text-align: center;
-	color: #A4A400;
-	font-size: 2em;
+	color: gray;
+	background-color: LightBlue;
+	font-size: 1.5em;
 	margin-bottom: 0px;
 }
 
@@ -24,7 +25,6 @@ h1 {
 	font-family: "Century Gothic", Futura, Verdana;
 	color: #A4A400;
 	text-align: center;
-	background-color: lightBlue;
 	font-size: 1.5em;
 	margin-top: 0px;
 	margin-bottom: 0px;
@@ -32,14 +32,36 @@ h1 {
 
 #p3 {
 	font-family: "Century Gothic", Futura, Verdana;
-	color: #008000;
+	color: #A4A400;
 	text-align: center;
-	font-size: 1.4em;
+	font-size: 1.5em;
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
 
+#p4, #p5 {
+	font-family: "Century Gothic", Futura, Verdana;
+	color: #008000;
+	font-size: 1.5em;
+}
+
+li {
+	list-style-image: url(images/pie_icon.gif);
+	color: Brown;
+	font-family: "Century Gothic", Futura, Verdana;
+
+}
 img {
 	margin-left: 34em;
 	margin-top: 0px; 
+}
+
+a {
+	color: Brown;
+}
+
+p a {
+	font-size: 1.5em;
+	color: #008000;
+	font-weight: bold;
 }
