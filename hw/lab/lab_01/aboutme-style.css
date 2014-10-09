@@ -3,7 +3,6 @@ body {
 	font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
-<<<<<<< HEAD
 h1, h2 {
 	color: #CD853F;
 }
@@ -17,7 +16,6 @@ p strong {
 
 /*Style Your Page with CSS*/
 
-=======
 h1 {
 	color: #CD853F;
 }
@@ -35,7 +33,7 @@ li {
 	font-style: italic;
 }
 /*Style Your Page with CSS*/
->>>>>>> b251460aa0a4d2ba0b4231dd7f508c79fe144c1c
+
 a:link {text-decoration: none;}
 a:visited {text-decoration: none;}
 a:hover {text-decoration: underline;}
@@ -43,7 +41,6 @@ a:active {text-decoration: none;}
 
 p:first-letter {
 	font-size: 1.5em;
-<<<<<<< HEAD
 	font-weight: bold;
 }
 
@@ -53,24 +50,18 @@ ol {
 	list-style: none;
     counter-reset: section 4;
     position: relative;
-=======
 }
 /*Advanced Style Techniques*/
 ol {
 	list-style: none;
     counter-reset: section 4;
->>>>>>> b251460aa0a4d2ba0b4231dd7f508c79fe144c1c
 }
 
 ol li:before {
     counter-increment: section -1;
     content: counter(section) ". ";
-<<<<<<< HEAD
     position: absolute;
 	left: 1em;
 }
 
-=======
-}
->>>>>>> b251460aa0a4d2ba0b4231dd7f508c79fe144c1c
 /*Decrementing ol*/
