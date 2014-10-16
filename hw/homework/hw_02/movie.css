@@ -1,0 +1,51 @@
+body {
+	background-image: url(images/background.png);
+	font-size: 8pt;
+	font-family: Verdana, Tahoma;
+	margin: 0px;
+	padding: 0px;
+}
+
+.first {
+	text-align: center;
+	background-image: url(images/bannerbackground.png);
+}
+
+h1 {
+	text-align: center;
+	font-size: 24pt;
+	font-family: Tahoma, Verdana;
+}
+
+.body {
+	border: 4px gray solid;
+	width: 800px;
+	margin-left: 200px;
+}
+
+.right {
+	float: right;
+	width: 250px;
+	font-size: 8pt;
+	background-color: #A2B964;
+	font-family: Arial;
+}
+
+.rotten {
+	background-image: url(images/rottenbackground.png);
+	font-size: 8pt;
+	color: white;
+}
+
+.rotten span {
+	font-weight: bold;
+	font-size: 48pt;
+	color: red;
+	vertical-align: top;
+}
+
+#bottom {
+	background-color: #A2B964;
+	text-align: center;
+	padding: 5px;
+}
