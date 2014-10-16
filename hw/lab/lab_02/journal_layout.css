@@ -6,21 +6,21 @@ body {
 }
 
 .green {
-	border: 5px green solid;
+	border: 10px white solid;
 	background-color: white;
 }
 
 .red {
-	border: 5px red solid;
 	text-align: right;
+	background-color: #A8F0F0;
 }
 
 .yellow {
-	border: 5px yellow solid; 
+	font-size: 14px; 
 }
 
 .blue {
-	border: 5px blue solid;
+	border: 4px #C2E9E9 solid;
 	background-color: #E8FBFB;
 		margin-top: 10px;
 	margin-bottom: 0px;
@@ -33,8 +33,25 @@ body {
 	float: right;
 }
 
-.purple {
-	border: 5px purple solid;
+#blue1 {
+	height: 10em;
 }
 
+#blue2 {
+	height: 13em;
+}
+.purple {
+	border-bottom: 2px #009097 dashed;
+}
 
+.left {
+	position: absolute;
+	border: 4px #C2E9E9 solid;
+	margin-top: 1em;
+	padding-left: 5px;
+	width: 200px;
+}
+
+.right {
+	margin-left: 220px; 
+}
