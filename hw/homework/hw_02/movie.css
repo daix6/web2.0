@@ -20,15 +20,37 @@ h1 {
 .body {
 	border: 4px gray solid;
 	width: 800px;
-	margin-left: 200px;
+	margin: auto;
+	height: 964px;
+}
+
+.two { height: 940px; margin: 0px}
+
+.left {
+	width: 550px;
+	margin: 0px
+	float: left;
 }
 
 .right {
 	float: right;
 	width: 250px;
 	font-size: 8pt;
-	background-color: #A2B964;
 	font-family: Arial;
+	background-color: #A2B964;
+	margin: 0px;
+}
+
+.intro {
+	margin: 10px;
+}
+
+.intro dt {
+	font-weight: bold;
+}
+
+.intro dd {
+	margin-bottom: 1em;
 }
 
 .rotten {
@@ -41,11 +63,51 @@ h1 {
 	font-weight: bold;
 	font-size: 48pt;
 	color: red;
-	vertical-align: top;
+    vertical-align: top;
+}
+
+#bold {
+	font-size: 8pt;
+	font-weight: bold;
+	border: 2px gray solid;
+	padding: 8px;
+	background-color: #E1D697;
+	min-height: 25px;
+}
+
+#bold img {
+	float: left;
+	padding-right: 5px;
+}
+
+#italic span {
+	font-style: italic;
+}
+
+#italic img {
+	float: left;
+	padding-right: 5px;
+}
+
+.leftcomment, .rightcomment {
+	margin-bottom: 3em;
+}
+
+.leftc {
+	float: left;
+	width: 47%;
+	padding-left: 2%;
+}
+
+.rightc {
+	float: right;
+	width: 47%;
+	padding-right: 2%;
 }
 
 #bottom {
-	background-color: #A2B964;
 	text-align: center;
+	margin: 0px;
 	padding: 5px;
+	background-color: #A2B964;
 }
