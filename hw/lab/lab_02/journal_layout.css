@@ -50,8 +50,14 @@ body {
 	margin-top: 1em;
 	padding-left: 5px;
 	width: 200px;
+	background-image: url(images/background.gif);
 }
 
 .right {
 	margin-left: 220px; 
 }
+
+#hover:hover {
+	color: yellow;
+}
+img:hover {background-color: yellow;}
