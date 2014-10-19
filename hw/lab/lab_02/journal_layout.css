@@ -41,17 +41,18 @@ body {
 	border: 5px #C2E9E9 solid;
 	background-color: #E8FBFB;
 	margin-top: 10px;
-	margin-right: -100%; 
 	padding-left: 3px;
 }
 
 .right {
-	float: left;
-	width: 100%;
+	margin-left: 10px;
 }
 
 .clear {
 	clear: both;
 }
 
-.hover:hover {color: yellow;}
+div *:hover:not(div) {
+	background-color: yellow;
+	overflow: hidden;
+}
