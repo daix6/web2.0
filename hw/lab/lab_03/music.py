@@ -1,3 +1,4 @@
+'''handle music.html'''
 import os.path
 import random
 
@@ -6,11 +7,11 @@ import tornado.ioloop
 import tornado.options
 import tornado.web
 
-
 from tornado.options import define, options
 define("port", default=8000, help="run on the given port", type=int)
 
-class item:
+class Item:
+    '''constructor'''
     def __init__(self, name, filetype, bsize, size):
         self.name = name
         self.filetype = filetype
@@ -26,6 +27,7 @@ class item:
 
 
 class MusicHandler(tornado.web.RequestHandler):
+    '''muscihandler'''
     def get(self):
         files = os.listdir('static/songs')
         filepath = os.path.join(os.path.dirname(__file__), 'static/songs')
@@ -35,14 +37,12 @@ class MusicHandler(tornado.web.RequestHandler):
         if playlist is not 'None':
             files = open(os.path.join(filepath, playlist)).read().splitlines()
 
-        for f in files:
-            musiclist.append(item(
-                f,
-                os.path.splitext(f)[1][1:],
-                os.path.getsize(os.path.join(filepath, f)),
-                os.path.getsize(os.path.join(filepath, f))
-                                  )
-                            )
+        for filename in files:
+            musiclist.append(Item(filename,
+                os.path.splitext(filename)[1][1:],
+                os.path.getsize(os.path.join(filepath, filename)),
+                os.path.getsize(os.path.join(filepath, filename))))
+
         bysize = self.get_argument('bysize', 'None')
         if bysize is not 'None':
             musiclist.sort(key=lambda x:(x.bsize), reverse=True)
@@ -51,12 +51,7 @@ class MusicHandler(tornado.web.RequestHandler):
         if shuffle is not 'None':
             random.shuffle(musiclist)
 
-        self.render(
-			"music.html",
-            musiclist=musiclist
-		)
-
-
+        self.render("music.html", musiclist=musiclist)
 
 if __name__ == '__main__':
     tornado.options.parse_command_line()
