@@ -14,7 +14,7 @@ class MovieItem(object):
     """docstring for MovieHandler"""
     def __init__(self, filepath):
         (self.name, self.year, self.rate,
-            self.count) = open(filepath).read().splitlines()
+         self.count) = open(filepath).read().splitlines()
         self.filename = filepath.split(os.sep)[-2]
     # base info of movie
 
@@ -22,18 +22,18 @@ class ReviewItem(object):
     """docstring for ReviewHandler"""
     def __init__(self, filepath):
         (self.comment, self.forr, self.name,
-            self.company) = open(filepath).read().splitlines()
+         self.company) = open(filepath).read().splitlines()
     # base info of review
 
 class IndexHandler(tornado.web.RequestHandler):
     """docstring for IndexHandler"""
     def get(self):
         film = self.get_argument('film')
-        filmpath = os.path.join(os.path.dirname(__file__),
-            "static/moviefiles", film)
+        filmpath = os.path.join(os.path.dirname(__file__), "static/moviefiles",
+                                film)
 
         dlist_files = open(os.path.join(filmpath,
-                            "generaloverview.txt")).read().splitlines()
+                           "generaloverview.txt")).read().splitlines()
         dlist = []
         for line in dlist_files:
             sline = line.split(':')
@@ -55,7 +55,7 @@ class IndexHandler(tornado.web.RequestHandler):
                 review_right.append(review)
         # review finished
         self.render("movie.html", dlist=dlist, review_left=review_left,
-            movie=movie, review_right=review_right, count=review_count)
+                    movie=movie, review_right=review_right, count=review_count)
 
 if __name__ == '__main__':
     tornado.options.parse_command_line()
