@@ -1,0 +1,127 @@
+body {
+	background-image: url(images/background.png);
+	font-family: Verdana, Tahoma;
+	font-size: 8pt;
+	padding: 0px;
+	margin: 0px;
+}
+
+img {
+	margin-bottom: -2px;
+} /*避免图片下方默认产生的2px*/
+
+#headimg {
+	text-align: center;
+	background-image: url(images/bannerbackground.png);
+}
+
+h1 {
+	font-family: Tahoma, Verdana;
+	font-size: 24pt;
+	text-align: center;
+}
+
+#container {
+	border: 4px gray solid;
+	width: 800px;
+	margin: auto;
+}
+
+#right {
+	float: right;
+	width: 250px;
+}
+
+#content {
+	float: left;
+	width: 550px;
+}
+
+#clear {
+	clear: both;
+} /*解决浮动元素脱离文档流*/
+
+#leftimg {
+	background-image: url(images/rottenbackground.png);
+	background-repeat: repeat-x;
+	color: white;
+	font-size: 8pt;
+	vertical-align: middle;
+}
+
+#part {
+	color: red;
+	font-size: 48pt;
+	font-weight: bold;
+}
+
+#all {
+	vertical-align: 13px;
+}
+
+#leftc {
+	float: left;
+	width: 47%;
+	margin-left: 2%;
+}
+
+#rightc {
+	float: right;
+	width: 47%;
+	margin-right: 2%;
+}
+
+.words {
+	border: 2px gray solid;
+	background-color: #E1D697;
+	font-weight: bold;
+	padding: 8px;
+	min-height: 24px;
+}
+
+.comment {
+	margin-bottom: 3em;
+}
+
+.comment img {
+	float: left;
+	margin-right: 5px;
+}
+
+.comment span {
+	font-style: italic;
+}
+
+#right dl {
+	padding: 10px;
+	font-family: Arial;
+	margin: 0em;
+	background-color: #A2B964;
+}
+
+#right dt {
+	font-weight: bold;
+}
+
+#right dd {
+	margin-bottom: 1em;
+}
+
+#bottom {
+	text-align: center;
+	background-color: #A2B964;
+	padding: 5px;
+	margin: 0px;
+} /*如果段落用div的话……会形成块*/
+
+#html {
+	position: fixed;
+	right: 0px;
+	bottom: 33px;
+}
+
+#css {
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+}
