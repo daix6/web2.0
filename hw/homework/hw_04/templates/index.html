@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<!-- CSE 190 M Homework 4 (NerdLuv) -->
+	<head>
+		<title>NerdLuv</title>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<link href="{{ static_url("heart.gif") }}" type="image/gif" rel="shortcut icon" />
+		<link href="{{ static_url("css/nerdluv.css") }}" type="text/css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div id="main">
+			<div id="bannerarea">
+				<img src="{{ static_url("nerdluv.png") }}" alt="banner logo" /> <br />
+				where meek geeks meet
+			</div>
+			<form enctype="multipart/form-data" method="post">
+				<fieldset>
+					<legend>New User Signup:</legend>
+
+					<div>
+						<span><label for="name"><strong>Name:</strong></label></span>
+						<input type="text" name="user_name" size="18" id="name">
+					</div>
+
+					<div>
+						<span><strong>Gender:</strong></span>
+						<input type="radio" name="user_gender" value="M" id="male"><label for="male">Male</label>
+						<input type="radio" name="user_gender" value="F" checked="checked" id="female"><label for="female">Female</label>
+					</div>
+
+					<div>
+						<span><label for="age"><strong>Age:</strong></label></span>
+						<input type="text" name="user_age" size="5" maxlength="2" id="age">
+					</div>
+
+					<div>
+						<span><label for="type"><strong>Personality type:</strong></label></span>
+						<input type="text" name="user_type" size="5" maxlength="4" id="type">
+						(<a href="http://www.humanmetrics.com/cgi-win/JTypes2.asp" alt="#">Don't know your type?</a>)
+					</div>
+
+					<div>
+						<span><strong>Favorite OS:</strong></span>
+						<select  name="user_os" id="select">
+							<option value="Windows" selected="selected">Windows</option>
+							<option value="Mac OS X">Mac OS X</option>
+							<option value="Linux">Linux</option>
+							<option value="others">other</option>
+						</select>
+					</div>
+
+					<div id="seeking">
+						<span><strong>Seeking:</strong></span>
+						<input type="checkbox" name="user_sexual_orientation" value="M" checked="checked" id="male"><label for="male">Male</label>
+						<input type="checkbox" name="user_sexual_orientation" value="F" id="female"><label for="female">Female</label>
+					</div>
+
+					<div>
+						<span><label for="_age"><strong>Between ages:</strong></label></span>
+						<input type="text" name="user_minage" size="5" maxlength="2" id="_age">
+						and
+						<input type="text" name="user_maxage" size="5" maxlength="2">
+					</div>
+
+					<div>
+						<input type="submit" value="Sign Up" id="submit">
+					</div>
+				</fieldset>
+			</form>
+
+		</div>
+		
+		<p>
+			Results and page (C) Copyright 2009 NerdLuv Inc.
+		</p>
+
+		<div id="w3c">
+			<a href="http://validator.w3.org/check/referer">
+				<img src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" /></a>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+				<img src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS" /></a>
+		</div>
+	</body>
+</html>
