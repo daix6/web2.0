@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>主页</title>
+
+    <!-- Bootstrap -->
+    <link href="{{ static_url('css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <link href="{{ static_url('css/index.css') }}" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-ghost" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">
+            <img width="50" src="../static/images/band.png" alt="logo">
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+
+      {% for question in questions %}
+      <div class="jumbotron question col-sm-10 col-sm-offset-1">
+        <div class="title">{{ question.title }}</div>
+        <div class="time">{{ question.time }}</div>
+        <div class="author">{{ question.author }}</div>
+        <div class="clearfix"></div>
+        <div class="text">{{ question.text }}</div>
+        <button class="replyBtn btn btn-primary">回复TA</button>
+        <div class="clearfix"></div>
+        {% for reply in question.replys %}
+        <div class="jumbotron reply col-sm-10 col-sm-offset-2">
+          <div class="replyTxt">{{reply.text}}</div>
+          <div class="replyTime">{{ reply.time}}</div>
+          <div class="replyAuthor">{{ reply.author}}</div>
+        </div>
+        {% end %}
+      </div>
+      {% end %}
+      
+    </div>
+  </body>
+</html>
