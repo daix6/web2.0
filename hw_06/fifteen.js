@@ -9,7 +9,7 @@ $$ = function(id) {
 }
 
 window.onload = function () {
-	blocks = $$("#puzzlearea div");
+	blocks = $$("div#puzzlearea");
 	//get all puzzle pieces
 	blank_x = 300;
 	blank_y = 300;
