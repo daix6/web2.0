@@ -1,0 +1,76 @@
+body {
+	background: url(../images/background.jpg);
+	background-attachment: fixed;
+	background-color: #777;
+	background-size: cover;
+	background-repeat: no-repeat;
+	font-family: "微软雅黑";
+	margin: 0;
+	padding: 0;
+}
+
+.navigation {
+	background-color: rgba(255, 256, 240, 0.3);
+	width: 100%;
+	height: 15%;
+	margin: 0;
+}
+
+#title {
+	margin: auto;
+	padding: 30px;
+	font-weight: bold;
+	font-size: 24px;
+	color: white;
+	text-align: center;
+}
+
+#title p {
+	margin: auto;
+	padding: 30px;
+	font: 24px white bold;
+}
+
+.container {
+	margin-top: 10%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	min-height: 150px;
+	height: auto!important;
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.group {
+	width: 100%;
+	height: 30%;
+	padding: 3%;
+	margin: auto;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+button {
+	background-color:#3bb3e0;
+	padding: 10px;
+	position:relative;
+	font-family: 'Open Sans', sans-serif;
+	font-size:12px;
+	text-decoration:none;
+	color:#fff;
+	border: solid 1px #186f8f;
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(44,160,202)),
+	color-stop(1, rgb(62,184,229))
+	);
+	border-radius: 5px;
+}
