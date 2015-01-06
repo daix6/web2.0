@@ -1,76 +1,106 @@
 body {
-	background: url(../images/background.jpg);
+	background: url(../images/login_bg.jpg);
 	background-attachment: fixed;
 	background-color: #777;
 	background-size: cover;
 	background-repeat: no-repeat;
-	font-family: "微软雅黑";
+	font-family:"微软雅黑", "黑体","华文细黑";
 	margin: 0;
 	padding: 0;
 }
 
+/*
 .navigation {
-	background-color: rgba(255, 256, 240, 0.3);
+	position: absolute;
+	top: ;
 	width: 100%;
 	height: 15%;
 	margin: 0;
 }
+*/
 
-#title {
-	margin: auto;
-	padding: 30px;
-	font-weight: bold;
-	font-size: 24px;
-	color: white;
-	text-align: center;
+#main {
+	position: absolute;
+	top: 40%;
+	left: 40%;
+	width: auto;
+	min-height: 150px;
+	height: auto!important;
 }
 
-#title p {
+#title {
+	width: 100%;
 	margin: auto;
-	padding: 30px;
-	font: 24px white bold;
+	text-align: center;
+	font-size: 24px;
+	color: white;
+	letter-spacing: 3px;
 }
 
 .container {
 	margin-top: 10%;
 	margin-left: auto;
 	margin-right: auto;
-	width: 500px;
-	min-height: 150px;
-	height: auto!important;
-	background-color: rgba(255, 255, 255, 0.3);
+	/*background-color: rgba(255, 255, 255, 0.3);*/
 }
 
 .group {
 	width: 100%;
 	height: 30%;
-	padding: 3%;
-	margin: auto;
+	padding-bottom: 20px;
 	text-align: center;
 	font-weight: bold;
 	color: white;
 }
 
+input {
+	width: 250px;
+	height: 30px;
+	margin: 0;
+	text-align: center;
+}
+
 a {
+	vertical-align: center;
 	text-decoration: none;
-	color: white;
+	color: gray;
+	font-size: 12px;
 }
 
 button {
-	background-color:#3bb3e0;
-	padding: 10px;
+	background-color: rgba(0,255,255, 0.4);
+	padding:10px;
 	position:relative;
 	font-family: 'Open Sans', sans-serif;
 	font-size:12px;
 	text-decoration:none;
-	color:#fff;
+	color: #FFF;
+	height: 40px;
+	width: 60px;
+	text-align: center;
 	border: solid 1px #186f8f;
-	background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0, rgb(44,160,202)),
-	color-stop(1, rgb(62,184,229))
-	);
 	border-radius: 5px;
+	cursor: pointer;
+}
+
+button:active {
+	padding-bottom: 9px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 11px;
+	top: 1px;
+}
+
+.group button {
+	float: right;
+}
+
+.group a {
+	float: left;
+	margin-top: 15px;
+}
+
+#signupBt {
+	margin: auto;
+	width: 255px;
 }

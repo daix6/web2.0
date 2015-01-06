@@ -11,28 +11,27 @@
   <body>
 
    <!-- 导航栏 -->
-    <div class="navigation">
+    <div id="main">
         <div id="title">中山大学大冒险</div>
-    </div>
+
 
     <!-- 登陆框 -->
     <div class="container">
         <form class="box" method="post" action="\login">
           <div class="group">
-            <label for="name">用户名</label>
-              <input type="username" class="form-control" id="name" name="name">
+              <input type="username" class="form-control" id="name" name="name" placeholder="用户名">
           </div>
 
           <div class="group">
-            <label for="password">密码</label>
-              <input type="password" class="form-control" id="password" name="password">
+              <input type="password" class="form-control" id="password" name="password" placeholder="密码">
           </div>
 
           <div class="group">
-              <button type="submit">登陆</button>
-            	<a href="/signup"> 注册</a>
+               <button type="submit">登陆</button>
+               <a href="signup.html">没有账号？注册</a>
           </div>
         </form>
+    </div>
     </div>
 
   </body>
