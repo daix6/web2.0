@@ -1,23 +1,27 @@
-Directory Structure: 
+Directory Structure:
+<pre> 
 .
-│  REDAME.txt
+│  REDAME.md
 │  server.py
-│
+│  
 ├─static
 │  ├─css
+│  │      demo.css
 │  │      game.css
-│  │      index.css
 │  │      login.css
-│  │
+│  │      style1.css
+│  │      
 │  ├─data
-│  │
+│  │      userData.txt
+│  │      
 │  ├─images
 │  │      index_bg.jpg
 │  │      login_bg.jpg
-│  │
+│  │      
 │  └─js
-└─template
+└─templates
         game.html
         index.html
         login.html
         signup.html
+</pre>
