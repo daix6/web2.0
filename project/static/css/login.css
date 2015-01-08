@@ -16,9 +16,7 @@ body {
 	width: 100%;
 	height: 15%;
 	margin: 0;
-}
-*/
-
+}*/
 #main {
 	position: absolute;
 	top: 40%;
@@ -83,14 +81,6 @@ button {
 	cursor: pointer;
 }
 
-button:active {
-	padding-bottom: 9px;
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-top: 11px;
-	top: 1px;
-}
-
 .group button {
 	float: right;
 }
@@ -103,4 +93,13 @@ button:active {
 #signupBt {
 	margin: auto;
 	width: 255px;
+}
+
+button:active {
+	padding-bottom:9px;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:11px;
+	top:1px;
+	);
 }

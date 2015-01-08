@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>中山大学大冒险注册页面</title>
+    <title>中山大学大冒险登陆页面</title>
 
-    <link href="../static/css/login.css" rel="stylesheet"> 
+    <link href={{static_url('css/login.css')}} rel="stylesheet"> 
   </head>
   <body>
 
@@ -17,17 +17,18 @@
 
     <!-- 登陆框 -->
     <div class="container">
-        <form class="box" method="post" action="\signup">
+        <form class="box" method="post" action="/login">
           <div class="group">
               <input type="username" class="form-control" id="name" name="name" placeholder="用户名">
           </div>
 
           <div class="group">
-              <input type="password" class="form-control" id="password" name="password" placeholder="密码">
+              <input type="password"class="form-control" id="password" name="password" placeholder="密码">
           </div>
 
           <div class="group">
-               <button type="submit" id="signupBt">注册</button>
+               <button type="submit">登陆</button>
+               <a href="/signup">没有账号？注册</a>
           </div>
         </form>
     </div>

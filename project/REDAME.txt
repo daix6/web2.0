@@ -1,0 +1,23 @@
+Directory Structure: 
+.
+│  REDAME.txt
+│  server.py
+│
+├─static
+│  ├─css
+│  │      game.css
+│  │      index.css
+│  │      login.css
+│  │
+│  ├─data
+│  │
+│  ├─images
+│  │      index_bg.jpg
+│  │      login_bg.jpg
+│  │
+│  └─js
+└─template
+        game.html
+        index.html
+        login.html
+        signup.html
