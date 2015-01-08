@@ -80,10 +80,8 @@ class SignupHandler(BaseHandler):
 
 class LogoutHandler(BaseHandler):
     def get(self):
-        logout = self.get_argument("logout", 'None')
-        if logout is not 'None':
-            self.clear_cookie("name")
-            self.redirect("/")
+        self.clear_cookie("name")
+        self.redirect("/")
 
 class ContinueHandler(BaseHandler):
     def get(self):

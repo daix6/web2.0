@@ -5,29 +5,32 @@
 	<title>中山大学大冒险 - 游戏页面</title>
 
 	<link rel="stylesheet" type="text/css" href={{ static_url('css/game.css') }}>
+	<script type="text/javascript" src={{ static_url('js/jquery-1.8.0.js') }}></script>
+	<script src={{ static_url('js/game.js') }} type="text/javascript"></script>
 
 </head>
-<body>
+<body background="../static/images/img00.jpg">
 	<div id="navigation">
 		<div id="title">中山大学大冒险</div>
 	</div>
 	<div id="container">
-			<div id="question" class="none-div">
-				<p id="question-text" class="text">你希望在大学里恋爱吗？</p>
+			<div id="question">
+				<p id="question-text">你希望在大学里恋爱吗？</p>
 			</div>
-			<div id="choose" class="none-div">
+			<div id="choose">
 				<div><button id="A" class="cbtn btn">A. 希望</button></div>
 				<div><button id="B" class="cbtn btn">B. 不希望</button></div>
 				<div><button id="C" class="cbtn btn">C. 随缘</button></div>
 			</div>
 	</div>
 	<div id="function">
+		<div><button id="new" class="fbtn btn">重新开始</button></div>
 		<div><button id="exit" class="fbtn btn">保存进度</button></div>
 		<div><button id="save" class="fbtn btn">退出游戏</button></div>
 	</div>
 	<div id="footbar">
-		<div id="plot" class="none-div">
-			<p id="plot-text" class="text">欢迎来到中山大学大冒险，请按任意处开启你的故事吧！</p>
+		<div id="plot">
+			<p id="plot-text">欢迎来到中山大学大冒险，请按任意处开启你的故事吧！</p>
 		</div>
 	</div>
 </body>
