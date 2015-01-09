@@ -1,9 +1,75 @@
-###Web2.0
-####
-####课程作业记录~
-####
-#####log:
-######在pml班上华丽丽地开始受虐啦_(:з」∠)_
-######python难哭了QAQ，和HTML简直不是一个档次（虽然HTML也没有学的怎么样....)=
-#
-######更新中<(_ _)>
+###Web2.0课程作业
+
+* project 
+> ...各种糟糕_(:з」∠)_
+
+<pre>
+.
+├─hw_01
+│  └─images
+│
+├─hw_02
+│  └─images
+│
+├─hw_03
+│  ├─static
+│  │  ├─images
+│  │  └─moviefiles
+│  │      ├─mortalkombat
+│  │      ├─princessbride
+│  │      ├─tmnt
+│  │      └─tmnt2
+│  └─template
+│
+├─hw_04
+│  ├─static
+│  │  ├─css
+│  │  ├─database
+│  │  └─images
+│  │      └─_old
+│  └─templates
+│
+├─hw_05
+│
+├─hw_06
+│
+├─lab_01
+│
+├─lab_02
+│  └─images
+│
+├─lab_03
+│  ├─static
+│  │  └─songs
+│  └─template
+│
+├─lab_04
+│  ├─static
+│  │  ├─css
+│  │  └─database
+│  └─templates
+│
+├─lab_05
+│
+├─lab_06
+│
+├─new_hw_06
+│
+├─project
+│  ├─static
+│  │  ├─css
+│  │  ├─data
+│  │  ├─images
+│  │  └─js
+│  └─templates
+│
+├─test2
+│  ├─static
+│  │  ├─css
+│  │  ├─data
+│  │  └─images
+│  │
+│  └─template
+│
+└─week11-extra
+</pre>

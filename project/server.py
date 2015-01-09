@@ -50,7 +50,7 @@ class StartHandler(BaseHandler):
         if not self.current_user:
             self.redirect("/login")
         else:
-            self.render('game.html', user=self.current_user)
+            self.render('game.html', user=self.current_user, backdrop = "00")
 
 class SignupHandler(BaseHandler):
     def get(self):
@@ -88,15 +88,35 @@ class ContinueHandler(BaseHandler):
         if not self.current_user:
             self.redirect("/login")
         else:
-            while line:
-                line.strip('\r\n')
-                lines = line.split(',')
-                if name__ == lines[0]:
-                    break;
-                line = operator.readline()
-            backdrop = lines[2];
+            operator = open('static/data/userData.txt');
+            lines = operator.read().splitlines();
             operator.close()
-            self.render('game.html', user=self.current_user, background=backdrop)
+            for line in lines:
+                temp = line.split(',')
+                if self.current_user == temp[0]:
+                    break
+            backdrop = temp[2]
+            if (temp[2] == ""):
+                self.render('game.html', user=self.current_user, backdrop="00")
+            else:
+                self.render('game.html', user=self.current_user, backdrop=backdrop)
+
+class SaveHandler(BaseHandler):
+    def get(self):
+        background = self.get_argument('background', 'None')
+        reader = open('static/data/userData.txt')  
+        lines  = reader.read().splitlines()
+        reader.close()
+        output  = open('static/data/userData.txt','w')
+        for line in lines:
+            if self.current_user in line:
+                temp = line.split(',')
+                temp[2] = background
+                output.write(temp[0]+','+temp[1]+','+temp[2]+'\n')
+            else:
+                output.write(line+'\n')
+        output.close()
+        self.render('game.html', user=self.current_user, backdrop=background)
 
 if __name__ == "__main__":
     tornado.options.parse_command_line()
@@ -104,9 +124,10 @@ if __name__ == "__main__":
         (r'/', IndexHandler),
         (r'/login', LoginHandler),
         (r'/logout', LogoutHandler),
-    (r'/signup', SignupHandler),
-    (r'/start', StartHandler),
-    (r'/continue', ContinueHandler)
+        (r'/signup', SignupHandler),
+        (r'/start', StartHandler),
+        (r'/start', ContinueHandler),
+        (r'/save', SaveHandler)
     ], cookie_secret="61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo=", 
        template_path=os.path.join(os.path.dirname(__file__), "templates"),
        static_path=os.path.join(os.path.dirname(__file__), "static"),

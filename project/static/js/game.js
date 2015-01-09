@@ -80,7 +80,7 @@ $(document).ready(function() {
 			if ($(this).attr("id") == "A") {
 				var newBg = body.attr("background").replace("04", "10");
 				$("body").attr("background", newBg);
-				$("#plot-text").text("一天的劳累之后，你在三饭大快朵颐，竟然没发现自己菜里面的虫子。三天后的夜晚，你入睡，再也没有醒来……");
+				$("#plot-text").text("一天的劳累之后，你在三饭大快朵颐，竟然没发现自己菜里面的虫子。三天后的夜晚，你入睡，再也没有醒来……卒！");
 				success = true;
 			} else if ($(this).attr("id") == "B") {
 				var newBg = body.attr("background").replace("04", "00");
@@ -103,7 +103,7 @@ $(document).ready(function() {
 			if ($(this).attr("id") == "A") {
 				var newBg = body.attr("background").replace("06", "10");
 				$("body").attr("background", newBg);
-				$("#plot-text").text("你救下了少女！一番交谈，你得知少女也是软院的，因为课程压力太大，起了轻生的念头。你以自己为例，劝导少女。少女豁然开朗，笑着说，对哦，你这样都活得下去，我怎么能死呢？你无言，邀少女去吃饭，选择了三饭。一向孤单的你突然有了新人陪伴，高兴不已，没注意到菜里的虫，三天后的夜晚，你入睡，再也没有醒来……");
+				$("#plot-text").text("你救下了少女！一番交谈，你得知少女也是软院的，因为课程压力太大，起了轻生的念头。你以自己为例，劝导少女。少女豁然开朗，笑着说，对哦，你这样都活得下去，我怎么能死呢？你无言，邀少女去吃饭，选择了三饭。一向孤单的你突然有了少女陪伴，高兴不已，没注意到菜里的虫，三天后的夜晚，你入睡，再也没有醒来……卒！");
 				success = true;
 			} else if ($(this).attr("id") == "B") {
 				var newBg = body.attr("background").replace("06", "11");
@@ -144,15 +144,15 @@ $(document).ready(function() {
 		var target = $(event.target);
 		if (!(target.is("#container") || target.is(".btn"))) {
 			if (!isFinished() && container.css("display") == "none") {
-				container.fadeIn("slow").css("display", "block");
-				footbar.fadeOut("slow").css("display", "none");
+				footbar.css("display", "none");
+				container.fadeIn("50000").css("display", "block");
 			}
 		}
 	}
 
 	function showPlot() {
 		container.css("display", "none");
-		footbar.css("display", "block");
+		footbar.fadeIn("50000").css("display", "block");
 	}
 
 	function isFinished() {
