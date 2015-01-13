@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>中山大学大冒险注册页面</title>
-
+    
+    <link href={{static_url('css/foundation.min.css')}} rel="stylesheet">
     <link href={{static_url('css/login.css')}} rel="stylesheet"> 
   </head>
   <body>
@@ -17,21 +18,35 @@
 
     <!-- 登陆框 -->
     <div class="container">
-        <form class="box" method="post" action="/signup">
-          <div class="group">
-              <input type="username" class="form-control" id="name" name="name" placeholder="用户名">
+    <div class="row">
+        <form  class="large-4 small-8 large-centered small-centered columns"class="box" method="post" action="/signup" data-abide>
+          <div class="name-field group">
+              <input type="text" class="form-control" id="name" name="name" placeholder="用户名">
           </div>
 
-          <div class="group">
-              <input type="password" class="form-control" id="password" name="password" placeholder="密码">
+          <div class="password-field group">
+              <input type="password" class="form-control" id="password" name="password" placeholder="设置密码">
           </div>
 
-          <div class="group">
-               <button type="submit" id="signupBt">注册</button>
+          <div class="password-confirmation-field group ">
+              <input type="password" class="form-control" data-equalto="password" placeholder="请再次输入密码">
+              <small class="error">密码不一致</small>
+          </div>
+          <div class="large-10 small-10 large-centered small-centered columns">
+          <div class="row group">
+               <button class="large-centered small-centered columns"type="submit" id="signupBt">注册</button>
+          </div>
           </div>
         </form>
     </div>
     </div>
+    </div>
 
+    <script src={{ static_url('js/vendor/jquery.js') }}></script>
+    <script src="../static/js/foundation.min.js"></script>
+    <script src="../static/js/foundation/foundation.abide.js"></script>
+    <script>
+    $(document).foundation();
+    </script>
   </body>
 </html>

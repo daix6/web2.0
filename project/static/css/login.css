@@ -17,13 +17,12 @@ body {
 	height: 15%;
 	margin: 0;
 }*/
+
 #main {
-	position: absolute;
-	top: 40%;
-	left: 40%;
-	width: auto;
 	min-height: 150px;
 	height: auto!important;
+	position: relative;
+	top: 20%;
 }
 
 #title {
@@ -36,7 +35,7 @@ body {
 }
 
 .container {
-	margin-top: 10%;
+	margin-top: 2%;
 	margin-left: auto;
 	margin-right: auto;
 	/*background-color: rgba(255, 255, 255, 0.3);*/
@@ -45,7 +44,7 @@ body {
 .group {
 	width: 100%;
 	height: 30%;
-	padding-bottom: 20px;
+	padding-bottom: 5%;
 	text-align: center;
 	font-weight: bold;
 	color: white;
@@ -68,13 +67,12 @@ a {
 button {
 	background-color: rgba(0,255,255, 0.4);
 	padding:10px;
+	width: 100%;
 	position:relative;
 	font-family: 'Open Sans', sans-serif;
 	font-size:12px;
 	text-decoration:none;
 	color: #FFF;
-	height: 40px;
-	width: 60px;
 	text-align: center;
 	border: solid 1px #186f8f;
 	border-radius: 5px;
@@ -90,10 +88,6 @@ button {
 	margin-top: 15px;
 }
 
-#signupBt {
-	margin: auto;
-	width: 255px;
-}
 
 button:active {
 	padding-bottom:9px;
@@ -102,4 +96,11 @@ button:active {
 	padding-top:11px;
 	top:1px;
 	);
+}
+
+span {
+	color: red;
+	font-size: 12px;
+	display: block;
+	text-align: center;
 }

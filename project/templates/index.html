@@ -3,36 +3,51 @@
 	<head>
 		<meta charset="UTF-8" />
         <title>中山大学大冒险</title>
-        <link rel="stylesheet" type="text/css" href={{static_url('css/demo.css')}} />
-        <link rel="stylesheet" type="text/css" href={{static_url('css/style1.css')}} />
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href={{ static_url('css/foundation.min.css') }}>
+        <link rel="stylesheet" type="text/css" href={{static_url('css/general.css')}} />
+        <link rel="stylesheet" type="text/css" href={{static_url('css/index.css')}} />
+        <!--<link rel="stylesheet" type="text/css" href={{static_url('css/style1.css')}} />-->
+		<!--<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>-->
 		
     </head>
     <body>
-		<div class="container">
-			<header>
-                <h1>中山大学大冒险</h1>
-                <h2>看你能死几回 </h2>
-			</header>
-			<section>
-                <div id="container_buttons">
-                    <p>
-                        <a href="/start" class="a_demo_one">
-                            新的故事
-                        </a>
-                    </p>
-                    <p>
-                        <a href="/start" class="a_demo_one">
-                            旧的回忆
-                        </a>
-                    </p>
-                    <p>
-                        <a href="/logout" class="a_demo_one">
-                            退出游戏  
-                        </a>
-                    </p>
+    <div class="container">
+        <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+            <li class="name">
+                <h1><a href="#">中山大学大冒险</a></h1>
+            </li>
+            <li class="toggle-topbar"><a href="#"><span>{{user}}</span></a></li>
+        </ul>
+        <section class="top-bar-section">
+            <ul class="right">
+                <li>
+                    <a href="#">{{ user }}</a>
+                    
+                </li>
+            </ul>
+
+        </section>
+        </nav>
+		<div id="container">
+        <!--
+            <h3 class="small-12 large-4 large-centered small-centered columns">
+                    中山大学大冒险
+            </h3>
+            <h3 class="small-12 large-4 large-centered small-centered columns">
+                        看你能死几回
+            </h3>
+        -->
+            <div class="row" id="choose">
+                <div class="small-6 large-5 large-centered small-centered columns">
+                    <ul class="stack button-group radius">
+                        <li><a href="/start" class="button cbtn radius" id="A">新的故事</a></li>
+                        <li><a href="/continue" class="button cbtn radius" id="B">旧的回忆</a></li>
+                        <li><a href="/logout" class="button cbtn radius" id="C">退出游戏  </a></li>
+                    </ul>
                 </div>
-			</section>
+            </div>
+		</div>
         </div>
     </body>
 </html>

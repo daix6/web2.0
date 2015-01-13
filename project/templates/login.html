@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>中山大学大冒险登陆页面</title>
 
-    <link href={{static_url('css/login.css')}} rel="stylesheet"> 
+    <link href={{static_url('css/foundation.min.css')}} rel="stylesheet">
+    <link href={{static_url('css/login.css')}} rel="stylesheet">
+    <script src={{ static_url('js/vendor/jquery.js') }}></script>
+    <script src="../static/js/foundation.min.js"></script>
+    <script src="../static/js/foundation/foundation.abide.js"></script>
   </head>
   <body>
 
@@ -17,22 +21,42 @@
 
     <!-- 登陆框 -->
     <div class="container">
-        <form class="box" method="post" action="/login">
-          <div class="group">
-              <input type="username" class="form-control" id="name" name="name" placeholder="用户名">
+      <div class="row">
+        <form id="myForm" class="large-4 small-7 large-centered small-centered columns" class="box" data-abide action="/login" method="post">
+        {% if flag == 1 %}
+              <span>账号或密码错误</span>
+          {% end %}
+          <div class="name-field group">
+              <input type="text" class="form-control" id="name" name="name" placeholder="用户名">
           </div>
 
-          <div class="group">
-              <input type="password"class="form-control" id="password" name="password" placeholder="密码">
+          <div class=" password-field group">
+              <input type="password" class="form-control" id="password" name="password" placeholder="密码">
           </div>
 
-          <div class="group">
-               <button type="submit">登陆</button>
-               <a href="/signup">没有账号？注册</a>
+          <div class="large-11 small-10 large-centered small-centered columns">
+          <div class="row">
+              <div class=" small-10 large-6 columns">
+                  <div class="row">
+                  <a class="samll-centered" href="/signup">没有账号？注册</a>
+                  </div>
+              </div>
+              <div class="small-12 large-5 columns">
+                <div class="row">
+                  <button class="small-centered" id="loginbt">登陆</button>
+                </div>
+              </div>
+          </div>
           </div>
         </form>
+      </div>
     </div>
     </div>
+
+    <script>
+    $(document).foundation();
+    </script>
+
 
   </body>
 </html>
