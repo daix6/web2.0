@@ -1,14 +1,14 @@
-# -*- coding: utf-8 -*-
+import os
+import tornado.wsgi
+import sae
+import wsgiref.handlers
 
-import tornado.httpserver
-import tornado.ioloop
-import tornado.options
-import tornado.web
-import os.path
-import re
-
-from tornado.options import define, options
-define("port", default=8888, help="run on the given port", type=int)
+settings = { 
+"static_path" : os.path.join(os.path.dirname(__file__), "static"), 
+"template_path" : os.path.join(os.path.dirname(__file__), "templates"), 
+"gzip" : True, 
+"debug" : True, 
+}
 
 FLAG = 0
 
@@ -16,13 +16,22 @@ class BaseHandler(tornado.web.RequestHandler):
     def get_current_user(self):
         return self.get_secure_cookie("name")
 
+class WrongHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.write_error(404)
+
+    def write_error(self, status_code, **kwages):
+        if status_code == 404:
+            self.render('404.html')
+        else:
+            self.write('error: ' + str(status_code))
+
 class LoginHandler(BaseHandler):
     def get(self):
         if self.current_user:
             self.redirect('/')
         else:
             global FLAG
-            print "login get", FLAG
             self.render('login.html', flag=FLAG)
 
     def post(self):
@@ -37,24 +46,21 @@ class LoginHandler(BaseHandler):
             if name__ == lines[0] and password__ == lines[1]:
                 operator.close()
                 self.set_secure_cookie("name", self.get_argument("name"))
-                self.redirect("/")
+                break
             line = operator.readline()
         operator.close()
         global FLAG
         FLAG = 1
-        print "login post", FLAG
         self.redirect("/login")
-
+        
 
 class IndexHandler(BaseHandler):
     def get(self):
-        print self.current_user
         if not self.current_user:
             self.redirect("/login")
         else:
             global FLAG
             FLAG = 0
-            print "index get", FLAG
             self.render('index.html', user=self.current_user)
 
 
@@ -137,32 +143,18 @@ class SaveHandler(BaseHandler):
         output.close()
         self.redirect('/continue')
 
-class WrongHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write_error(404)
-
-    def write_error(self, status_code, **kwages):
-        if status_code == 404:
-            self.render('404.html')
-        else:
-            self.write('error: ' + str(status_code))
-
-
-if __name__ == "__main__":
-    tornado.options.parse_command_line()
-    app = tornado.web.Application([
-        (r'/', IndexHandler),
-        (r'/login', LoginHandler),
-        (r'/logout', LogoutHandler),
-        (r'/signup', SignupHandler),
-        (r'/start', StartHandler),
-        (r'/continue', ContinueHandler),
-        (r'/save', SaveHandler),
-        (r'.*', WrongHandler)
-    ], cookie_secret="61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo=", 
+app = tornado.wsgi.WSGIApplication([
+     (r'/', IndexHandler),
+     (r'/login', LoginHandler),
+     (r'/logout', LogoutHandler),
+     (r'/signup', SignupHandler),
+     (r'/start', StartHandler),
+     (r'/continue', ContinueHandler),
+     (r'/save', SaveHandler),
+     (r'.*', WrongHandler)
+], cookie_secret="61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo=", 
        template_path=os.path.join(os.path.dirname(__file__), "templates"),
        static_path=os.path.join(os.path.dirname(__file__), "static"),
        debug=True)
-    http_server = tornado.httpserver.HTTPServer(app)
-    http_server.listen(options.port)
-    tornado.ioloop.IOLoop.instance().start()
+
+application = sae.create_wsgi_app(app)

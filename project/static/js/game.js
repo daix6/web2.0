@@ -4,6 +4,10 @@ $(document).ready(function() {
 	var body = $("body");
 	var success = false;
 
+	var windowHeight = $(window).height();
+	$("#filler").height($(window).height()*0.925);
+	var fillerHeight = $("#filler").height();
+
 	container.css("display", "none");
 
 	$("#footbar").on("click", bodyClick);
@@ -151,6 +155,7 @@ $(document).ready(function() {
 
 	function bodyClick(event) {
 		var target = $(event.target);
+
 		if (!(target.is("#container") || target.is(".cbtn"))) {
 			if (!isFinished() && container.css("display") == "none") {
 				footbar.css("display", "none");
@@ -161,6 +166,7 @@ $(document).ready(function() {
 
 	function showPlot() {
 		container.css("display", "none");
+
 		footbar.fadeIn("50000").css("display", "block");
 		var showString = $("#plot-text").text();
 		$("#plot-text").text("");
