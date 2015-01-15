@@ -9,14 +9,6 @@ body {
 	padding: 0;
 }
 
-/*
-.navigation {
-	position: absolute;
-	top: ;
-	width: 100%;
-	height: 15%;
-	margin: 0;
-}*/
 
 #main {
 	min-height: 150px;
@@ -102,5 +94,14 @@ span {
 	color: red;
 	font-size: 12px;
 	display: block;
+	text-align: center;
+}
+
+#copyright {
+	position: fixed;
+	bottom: 5%;
+	color: gray;
+	font-size: 10px;
+	width: 100%;
 	text-align: center;
 }

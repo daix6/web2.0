@@ -1,16 +1,20 @@
+# -*- coding: utf-8 -*-
 import os
 import tornado.wsgi
 import sae
 import wsgiref.handlers
+import sae.kvdb
 
 settings = { 
-"static_path" : os.path.join(os.path.dirname(__file__), "static"), 
-"template_path" : os.path.join(os.path.dirname(__file__), "templates"), 
-"gzip" : True, 
-"debug" : True, 
+    "static_path" : os.path.join(os.path.dirname(__file__), "static"), 
+    "template_path" : os.path.join(os.path.dirname(__file__), "templates"), 
+    "gzip" : True, 
+    "debug" : True, 
 }
 
 FLAG = 0
+
+kv = sae.kvdb.KVClient()
 
 class BaseHandler(tornado.web.RequestHandler):
     def get_current_user(self):
@@ -35,34 +39,29 @@ class LoginHandler(BaseHandler):
             self.render('login.html', flag=FLAG)
 
     def post(self):
+        global FLAG
         name__ = self.get_argument('name', 'None')
         password__ = self.get_argument('password', 'None')
-        operator = open('static/data/userData.txt')
-        line = operator.readline()
-        lines = []
-        while line:
-            line = line.strip('\r\n')
-            lines = line.split(',')
-            if name__ == lines[0] and password__ == lines[1]:
-                operator.close()
+        if (kv.get(name__.encode()) != None):
+            if (kv.get(name__.encode()).split(" ")[0] == password__.encode()):
                 self.set_secure_cookie("name", self.get_argument("name"))
-                break
-            line = operator.readline()
-        operator.close()
-        global FLAG
-        FLAG = 1
-        self.redirect("/login")
-        
+                FLAG = 0
+                self.redirect('/')
+            else:
+                FLAG = 1
+                self.redirect('/login')
+        else:
+            FLAG = 1
+            self.redirect('/login')
 
 class IndexHandler(BaseHandler):
     def get(self):
+        global FLAG
         if not self.current_user:
             self.redirect("/login")
         else:
-            global FLAG
             FLAG = 0
             self.render('index.html', user=self.current_user)
-
 
 class StartHandler(BaseHandler):
     def get(self):
@@ -81,67 +80,33 @@ class SignupHandler(BaseHandler):
     def post(self):
         name__ = self.get_argument('name', 'None')
         password__ = self.get_argument('password', 'None')
-        operator = open('static/data/userData.txt')
-        line = operator.readline()
-        while line:
-            line.strip('\r\n')
-            lines = line.split(',')
-            if name__ == lines[0]:
-                operator.close()
-                self.redirect("/signup")
-            line = operator.readline()
-        operator.close()
-        writer = open('static/data/userData.txt', 'a')
-        writer.write(name__+','+password__+",00"+'\r\n')
-        writer.close()
+        password__ += " 00"
+        kv.add(name__.encode(), password__.encode())
         self.set_secure_cookie("name", self.get_argument("name"))
         self.redirect("/")
 
 class LogoutHandler(BaseHandler):
     def get(self):
         self.clear_cookie("name")
-        self.redirect("/")
+        FLAG = 0
+        self.redirect("/login")
 
 class ContinueHandler(BaseHandler):
     def get(self):
         if not self.current_user:
             self.redirect("/login")
         else:
-            operator = open('static/data/userData.txt');
-            line = operator.readline()
-            while line:
-                line.strip('\r\n')
-                lines = line.split(',')
-                if self.current_user == lines[0]:
-                    break
-                line = operator.readline()
-            backdrop__ = lines[2]
-            print backdrop__
-            backdrop__ = backdrop__.strip('\r\n')
-            operator.close()
+            backdrop__ = kv.get(self.current_user).split(" ")[1]
             self.render('game.html', user=self.current_user, backdrop=backdrop__)
 
 class SaveHandler(BaseHandler):
     def get(self):
         background__ = self.get_argument('background', 'None')
-        print background__
-        reader = open('static/data/userData.txt')  
-        lines  = reader.readlines()  
-        reader.close()  
-        output  = open('static/data/userData.txt','w')
-        for line in lines:  
-            if not line:  
-                break
-            if self.current_user in line:  
-                temp = line.split(',')
-                temp1 = temp[0] + "," + temp[1] + "," + background__
-                temp1 = temp1.strip('\r\n')
-                temp1 = temp1 + '\r\n'
-                output.write(temp1)
-            else:
-                output.write(line)
-        output.close()
-        self.redirect('/continue')
+        password__ = kv.get(self.current_user).split(" ")[0]
+        password__ += " "
+        password__ += background__
+        kv.replace(self.current_user, password__)
+        self.render('game.html', user=self.current_user, backdrop=background__)
 
 app = tornado.wsgi.WSGIApplication([
      (r'/', IndexHandler),
@@ -150,7 +115,7 @@ app = tornado.wsgi.WSGIApplication([
      (r'/signup', SignupHandler),
      (r'/start', StartHandler),
      (r'/continue', ContinueHandler),
-     (r'/save', SaveHandler),
+     (r'/save.*', SaveHandler),
      (r'.*', WrongHandler)
 ], cookie_secret="61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo=", 
        template_path=os.path.join(os.path.dirname(__file__), "templates"),

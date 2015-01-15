@@ -31,15 +31,17 @@ class LoginHandler(BaseHandler):
         operator = open('static/data/userData.txt')
         line = operator.readline()
         lines = []
+        var f = 0;
         while line:
             line = line.strip('\r\n')
             lines = line.split(',')
             if name__ == lines[0] and password__ == lines[1]:
                 operator.close()
                 self.set_secure_cookie("name", self.get_argument("name"))
-                self.redirect("/")
             line = operator.readline()
         operator.close()
+        if not f:
+            redirect("/")
         global FLAG
         FLAG = 1
         print "login post", FLAG

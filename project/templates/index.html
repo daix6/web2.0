@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en"><!--<![endif]-->
-	<head>
-		<meta charset="UTF-8" />
-        <title>中山大学大冒险</title>
-        <link rel="stylesheet" type="text/css" href={{ static_url('css/foundation.min.css') }}>
-        <link rel="stylesheet" type="text/css" href={{static_url('css/general.css')}} />
-        <link rel="stylesheet" type="text/css" href={{static_url('css/index.css')}} />
-        <!--<link rel="stylesheet" type="text/css" href={{static_url('css/style1.css')}} />-->
-		<!--<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>-->
-		
-    </head>
-    <body>
-    <div class="row">
-        <nav class="top-bar" data-topbar role="navigation">
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中山大学大冒险登陆页面</title>
+
+    <link href={{static_url('css/foundation.min.css')}} rel="stylesheet">
+   <!-- <link href={{static_url('css/login.css')}} rel="stylesheet">-->
+    <link href={{static_url('css/index.css')}} rel="stylesheet">
+    <script src={{ static_url('js/vendor/jquery.js') }}></script>
+    <script src={{ static_url('js/foundation.min.js') }}></script>
+  </head>
+  <body>
+
+   <!-- 导航栏 -->
+    <nav class="top-bar" data-topbar role="navigation">
         <ul class="title-area">
             <li class="name">
                 <h1><a href="#">中山大学大冒险</a></h1>
@@ -25,28 +28,30 @@
                     <a href="#">{{ user }}</a>
                 </li>
             </ul>
-
         </section>
-        </nav>
-		<div id="container">
-        <!--
-            <h3 class="small-12 large-4 large-centered small-centered columns">
-                    中山大学大冒险
-            </h3>
-            <h3 class="small-12 large-4 large-centered small-centered columns">
-                        看你能死几回
-            </h3>
-        -->
+    </nav>
+
+    <div id="container">
             <div class="row" id="choose">
-                <div class="small-6 large-5 large-centered small-centered columns">
-                    <ul class="stack button-group radius">
-                        <li><a href="/start" class="button cbtn radius" id="A">新的故事</a></li>
-                        <li><a href="/continue" class="button cbtn radius" id="B">旧的回忆</a></li>
-                        <li><a href="/logout" class="button cbtn radius" id="C">退出游戏  </a></li>
-                    </ul>
+                <div class="small-6 large-4 large-centered small-centered columns">
+                    <div class="row">
+                        <a href="/start" class="small-centered large-centered columns button cbtn radius" id="A">新的故事</a>
+                    </div>
+                    <div class="row">
+                        <a href="/continue" class="small-centered large-centered columns button cbtn radius" id="B">旧的回忆</a>
+                    </div>
+                    <div class="row">
+                        <a href="/logout" class="small-centered large-centered columns button cbtn radius" id="C">退出游戏  </a>
+                    </div>
                 </div>
             </div>
-		</div>
     </div>
-    </body>
+
+
+    <script>
+    $(document).foundation();
+    </script>
+
+
+  </body>
 </html>

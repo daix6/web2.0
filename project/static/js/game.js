@@ -123,9 +123,9 @@ $(document).ready(function() {
 				$("#plot-text").text("你没救少女，继续向前走。走着走着，你感觉到心口很痛。身后传来少女落水的声音，你闻声倒地。痛的是你的良心啊！卒！");
 				success = true;
 			} else {
-				var newBg = body.css("backgroundImage").replace("06", "12");
+				var newBg = body.css("backgroundImage").replace("06", "15");
 				$("body").css("backgroundImage", newBg);
-				$("#plot-text").text("你和少女相谈甚欢，决定一起跳河……被路人救下，少女说她其实是波斯明教的圣女，既然命不该绝，她决定带你一起回到波斯。就此，你和她展开了一段奇妙恋爱物语！");
+				$("#plot-text").text("你和少女相谈甚欢，决定一起跳河……然后由于没人救你们双双卒！");
 				success = true;
 			}
 		} else if (body.css("backgroundImage").search("img09") != -1) {
@@ -151,6 +151,9 @@ $(document).ready(function() {
 			}
 		} else {}
 		showPlot();
+		if (success) {
+			$("#gameover").fadeIn("50000").css("display", "block");
+		}
 	}
 
 	function bodyClick(event) {
