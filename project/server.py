@@ -31,7 +31,7 @@ class LoginHandler(BaseHandler):
         operator = open('static/data/userData.txt')
         line = operator.readline()
         lines = []
-        var f = 0;
+        f = 0
         while line:
             line = line.strip('\r\n')
             lines = line.split(',')
