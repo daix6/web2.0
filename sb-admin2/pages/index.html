@@ -84,21 +84,18 @@
                 <li>
                     <a href="#replenishment" data-toggle="tab">补货</a>
                 </li>
-                <li>
-                    <div class="dropdown">
-                        <button type="button" class="btn dropdown-toggle" id="total" data-toggle="dropdown">当月销售总额
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="total">
-                            <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#all" data-toggle="tab">所有楼栋</a>
-                            </li>
-                            <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#one" data-toggle="tab">各楼栋</a>
-                            </li>
-                        </ul>
-                    </div>
-                    
+                <li class="dropdown">
+                    <a href="#" id="total" class="dropdown-toggle" 
+                         data-toggle="dropdown">销售总额 <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="total">
+                        <li>
+                            <a href="#all" tabindex="-1" data-toggle="tab">所有楼栋</a>
+                         </li>
+                         <li>
+                            <a href="#one" tabindex="-1" data-toggle="tab">各个楼栋</a>
+                         </li>
+                    </ul>
                 </li>
             </ul>
             <!-- Tab Navigation -->
@@ -112,7 +109,9 @@
                             <caption>订单总览</caption>
                             <tbody>
                                 <tr>
-                                    <td><strong>楼栋</strong></td>
+                                    <td style="vertical-align: middle; text-align: center">
+                                        <button class="btn" data-toggle="modal" data-target="#myModal1">楼层</button>
+                                    </td>
                                     <td style="padding: 0px">
                                         <table class="table" style="margin-bottom: 0px">
                                             <thead>
@@ -152,7 +151,9 @@
                             <caption>货物总览</caption>
                             <tbody>
                                 <tr>
-                                    <td><strong>楼栋</strong></td>
+                                    <td style="vertical-align: middle; text-align: center">
+                                        <button class="btn" data-toggle="modal" data-target="#myModal2">楼层</button>
+                                    </td>
                                     <td style="padding: 0px">
                                         <table class="table" style="margin-bottom: 0px">
                                             <thead>
@@ -224,25 +225,14 @@
                             <caption>所有楼栋销售总额</caption>
                             <thead>
                                 <tr>
-                                    <th>编号</th>
-                                    <th>商品明细</th>
-                                    <th>订货人信息</th>
-                                    <th>状态</th>
-                                    <th>剩余完成时间</th>
-                                    <th>操作</th>
+                                    <th>订单总数量</th>
+                                    <th>销售总金额</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>123123</td>
-                                    <td>李一奇</td>
-                                    <td>戴旋</td>
-                                    <td>未完成</td>
-                                    <td>01:01:01</td>
-                                    <td>
-                                        <button type="button" class="btn">完成订单</button>
-                                        <button type="button" class="btn">取消订单</button>
-                                    </td>
+                                    <td>200单</td>
+                                    <th>10000元</th>
                                 </tr>
                                 <tr>
                             </tbody>
@@ -257,14 +247,22 @@
                             <caption>各楼栋销售总额</caption>
                             <thead>
                                 <tr>
-                                    <th>编号</th>
+                                    <th>楼栋</th>
+                                    <th>订单数量</th>
+                                    <th>销售总额</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>123123</td>
+                                    <td>至善园4号</td>
+                                    <td>100单</td>
+                                    <td>4000元</td>
                                 </tr>
                                 <tr>
+                                    <td>至善园3号</td>
+                                    <td>100单</td>
+                                    <td>6000元</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>      
@@ -277,6 +275,70 @@
 
     </div>
     <!-- /#wrapper -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" 
+       aria-labelledby="myModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+          <div class="modal-content">
+             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" 
+                   aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                   请选择要查看的楼层
+                </h4>
+             </div>
+             <div class="modal-body">
+                <a href="#">至善园4号</a>
+                <a href="#">至善园3号</a>
+             </div>
+             <div class="modal-footer">
+                <button type="button" class="btn btn-default" 
+                   data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary">
+                   确认
+                </button>
+             </div>
+          </div>
+          <!-- /.modal-content -->
+       </div>
+       <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" 
+       aria-labelledby="myModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+          <div class="modal-content">
+             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" 
+                   aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                   请选择要补货的楼层
+                </h4>
+             </div>
+             <div class="modal-body">
+                <a href="#">至善园4号</a>
+                <a href="#">至善园3号</a>
+             </div>
+             <div class="modal-footer">
+                <button type="button" class="btn btn-default" 
+                   data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary">
+                   确认
+                </button>
+             </div>
+          </div>
+          <!-- /.modal-content -->
+       </div>
+       <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
 
     <!-- jQuery -->
@@ -301,6 +363,11 @@
             e.preventDefault();
             $(this).tab("show");
         });
+    </script>
+    <script>
+        $(function () { $('#myModal').modal({
+            keyboard: true
+        })});
     </script>
 
 </body>
