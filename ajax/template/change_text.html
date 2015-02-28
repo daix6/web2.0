@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Test for Ajax</title>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#btn1").click(function() {
+				$("#test1").load("../static/test.txt", function(responseTxt, statusTxt, xhr) {
+					if (statusTxt == "success")
+						alert("外部内容加载成功");
+					if (statusTxt == "error")
+						alert("Error: " + xhr.status + ": " + xhr.statusTxt);
+				});
+			});
+			$("#btn2").click(function() {
+				$.get("../static/test.asp", function(data, status) {
+					alert("Data: " + data + "\nStatus: " + status);
+				});
+			});
+			$("#btn3").click(function() {
+				$.post("../static/test_post.asp", 
+				{
+					name: "Donald Duck",
+					city: "Duckburg"
+				},
+				function(data, status) {
+					alert("Data: " + data + "\nStatus: " + status);
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+
+	<h3 id="test1">请点击下面的按钮，通过 jQuery AJAX 改变这段文本。</h3>
+	<button id="btn1" type="button">test</button>
+	<br>
+	<br>
+	<h3 id="test2">$.get()方法</h3>
+	<button id="btn2" type="button">test</button>
+	<br>
+	<br>
+	<h3 id="test3">$.post()方法</h3>
+	<button id="btn3" type="button">test</button>
+
+
+</body>
+</html>
