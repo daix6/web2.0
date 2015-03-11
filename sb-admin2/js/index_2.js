@@ -2,13 +2,17 @@ window.onload = initPage();
 
 // initialize the page
 function initPage() {
-
     // bootstrap plugins initilization
     pluginsOn();
     //refreshPerMin();
-    showTable(); //testing
+    showOrders(); //testing
 
-    $('.chooseBuild').bind('click', buildingChoose);
+    $(".chooseBuild").bind("click", buildingChoose);
+
+    document.getElementById("li_orders").onclick = showOrders;
+    document.getElementById("li_replenishment").onclick = showReplenishment;
+    document.getElementById("li_all").onclick = showAll;
+    document.getElementById("li_one").onclick = showOne;
 }
 
 function pluginsOn() {
@@ -18,115 +22,139 @@ function pluginsOn() {
         $(this).tab("show");
     });
 
-    //boostrap modal plugins
-    $("#deleteOrderBtn").modal({
-        show: false
-    });
-
-    $("#finishOrderBtn").modal({
-        show: false
-    });
+    $(function () { $("#myModal").modal({
+        keyboard: true
+    })});
 }
 
-//refresh the page per minute
-function refreshPerMin() {
-    refresh();
-    // setTimeOut(refreshPerMin, 60*1000);
-}
-
-//refresh the page
-function refresh() {
-    //create a request
-    request = createRequest();
-
-    if (request == null) {
-        alert("Unable to create request");
-        return;
+function isArray(arg) {
+    if (typeof arg == "object") {
+        var criteria = arg.constructor.toString.match(/array/i);
+        return criteria != null;
     }
-
-    request.onreadystatechange = showTable;
-    //open the url
-    request.open("GET", url, true);
-    request.send(null);
+    return false;
 }
 
-function showTable() {
+function clearTables(text) {
+    var tables = $(text);
+    while (tables.firstChild) {
+        tables.removeChild(tables[i].firstChild);
+    }
+}
+
+function showOrders() {
 //  if (request.readyState == 4) {
 //      if (request.status == 200) {
             //refresh the orders and stocks tables
-            var text = "2015/02/27,李一奇,10000元,未完成;2015/02/27,邓霭霖,20000元,未完成|邓霭霖,0;李一奇,999|200单,10000元|至善园4号,100单,4000元;至善园3号,100单,6000元"; //text = request.responseText
-
-            clearTablesContent(); //clear the body content in tables
-            InsertTablesContent(text);
+            var text = '{"code": 0, "data": {"buildings": [{"id": 1, "name": "至善园1号"}, {"id": 2, "name": "至善园2号"}], "orders": [{"released_time": 1425981398, "receiver_info": {"name": "张三", "location": "至善园3号", "phone": "123456"}, "money": 12.3, "status": "uncompleted"}, {"released_time": 1425933398, "receiver_info": {"name": "张四", "location": "至善园4号", "phone": "111111"}, "money": 15.3, "status": "completed"}], "inventory": [{"id": 1234, "name": "炒饭", "description": "炒饭", "price": 12.3, "quantity": 120}, {"id": 1254, "name": "炒菜", "description": "炒菜", "price": 15.3, "quantity": 45}], "total_sales": {"amount": 200, "money": 142324.5}}}'; //text = request.responseText
+            // unix时间戳->normal：先 var unixTimestamp = new Date(Unix timestamp * 1000) 然后 commonTime = unixTimestamp.toLocaleString()
+            // normal->unix时间戳：var commonTime = new Date(Date.UTC(year, month - 1, day, hour, minute, second))
+            clearTables("orders_table_body"); //clear the body content in tables
+            var json = JSON.parse(text);
+            InsertOrdersContent(json);
 //      }
 //    }
 }
 
-function clearTablesContent() {
-    var tables = $('.toDelete');
+function showReplenishment() {
+//  if (request.readyState == 4) {
+//      if (request.status == 200) {
+            //refresh the orders and stocks tables
+            var text = '{"code": 0, "data": {"buildings": [{"id": 1, "name": "至善园1号"}, {"id": 2, "name": "至善园2号"}], "orders": [{"released_time": 1425981398, "receiver_info": {"name": "张三", "location": "至善园3号", "phone": "123456"}, "money": 12.3, "status": "uncompleted"}, {"released_time": 1425933398, "receiver_info": {"name": "张四", "location": "至善园4号", "phone": "111111"}, "money": 15.3, "status": "completed"}], "inventory": [{"id": 1234, "name": "炒饭", "description": "炒饭", "price": 12.3, "quantity": 120}, {"id": 1254, "name": "炒菜", "description": "炒菜", "price": 15.3, "quantity": 45}], "total_sales": {"amount": 200, "money": 142324.5}}}'; //text = request.responseText
+            // unix时间戳->normal：先 var unixTimestamp = new Date(Unix timestamp * 1000) 然后 commonTime = unixTimestamp.toLocaleString()
+            // normal->unix时间戳：var commonTime = new Date(Date.UTC(year, month - 1, day, hour, minute, second))
+            clearTables("replenishment_table_body"); //clear the body content in tables
+            var json = JSON.parse(text);
+            InsertRepleContent(json);
+//      }
+//    }
+}
 
-    for (var i = 0; i < tables.length; i++) {
-        while (tables[i].firstChild) {
-            tables[i].removeChild(tables[i].firstChild);
+function showAll() {
+//  if (request.readyState == 4) {
+//      if (request.status == 200) {
+            //refresh the orders and stocks tables
+            var text = '{"code": 0, "data": {"buildings": [{"id": 1, "name": "至善园1号"}, {"id": 2, "name": "至善园2号"}], "orders": [{"released_time": 1425981398, "receiver_info": {"name": "张三", "location": "至善园3号", "phone": "123456"}, "money": 12.3, "status": "uncompleted"}, {"released_time": 1425933398, "receiver_info": {"name": "张四", "location": "至善园4号", "phone": "111111"}, "money": 15.3, "status": "completed"}], "inventory": [{"id": 1234, "name": "炒饭", "description": "炒饭", "price": 12.3, "quantity": 120}, {"id": 1254, "name": "炒菜", "description": "炒菜", "price": 15.3, "quantity": 45}], "total_sales": {"amount": 200, "money": 142324.5}}}'; //text = request.responseText
+            // unix时间戳->normal：先 var unixTimestamp = new Date(Unix timestamp * 1000) 然后 commonTime = unixTimestamp.toLocaleString()
+            // normal->unix时间戳：var commonTime = new Date(Date.UTC(year, month - 1, day, hour, minute, second))
+            clearTables("all_table_body"); //clear the body content in tables
+            var json = JSON.parse(text);
+            InsertRepleContent(json);
+//      }
+//    } 
+}
+
+//insert the table content into the suitable table container
+function InsertOrdersContent(json) {
+    var ordersDetails = json.data.orders;
+    var tableContainer = document.getElementById("orders_table_body");
+
+    for (var order in ordersDetails) {
+        var orderInfo = ordersDetails[order];
+        var tr = document.createElement("tr");
+        tableContainer.appendChild(tr);
+
+        for (var property in orderInfo) {
+            var td = document.createElement("td");
+            var text;
+
+            if (property == 'released_time') {
+                var unixTimestamp = new Date(orderInfo[property] * 1000);
+                text = document.createTextNode(unixTimestamp.toLocaleString());
+            } else if (property == 'receiver_info') {
+                var list = document.createElement("ul");
+                list.setAttribute("style", "list-style: none; padding: 0;");
+                for (var info in orderInfo[property]) {
+                    var li = document.createElement("li");
+                    var pre;
+                    if (info == "name") pre = "姓名：";
+                    else if (info == "location") pre = "地址：";
+                    else if (info == "phone") pre = "电话：";
+                    li.appendChild(document.createTextNode(pre + orderInfo[property][info]));
+                    list.appendChild(li);
+                }
+                text = list;
+            } else if (property == 'money') {
+                text = document.createTextNode(orderInfo[property] + "元");
+            } else if (property == 'status') {
+                if (orderInfo[property] == 'uncompleted') text = document.createTextNode("未完成");
+                else if (orderInfo[property] == 'completed') text = document.createTextNode("已完成");
+                else if (orderInfo[property] == 'cancelled') text = document.createTextNode("已取消");
+            }
+            td.appendChild(text);
+            tr.appendChild(td);
         }
     }
 }
 
-//insert the table content into the suitable table container
-function InsertTablesContent(text) {
-    var tablesContents = text.split("|");
+function InsertRepleContent(json) {
+    var repleDetails = json.data.inventory;
+    var tableContainer = document.getElementById("replenishment_table_body");
 
-    //tablesContents[0] contains the content about the table body of the orders
-    //tablesContents[1] contains the content about the table body of the stocks
-    for (var i = 0; i < tablesContents.length; i++) {
-        var tableContainer;
-        var list = tablesContents[i].split(";");
+    for (var reple in repleDetails) {
+        var repleInfo = repleDetails[reple];
+        var tr = document.createElement("tr");
+        var td;
+        tableContainer.appendChild(tr);
 
-        // switch the table container
-        switch (i) {
-            case 0:
-                tableContainer = document.getElementById("orders_table_body");
-                break;
-            case 1:
-                tableContainer = document.getElementById("replenishment_table_body");
-                break;
-            case 2:
-                tableContainer = document.getElementById("all_table_body");
-                break;
-            case 3:
-                tableContainer = document.getElementById("one_table_body");
-
-            default:
-                break;
-        }
-
-        // each insert into a row
-        for (var j = 0; j < list.length; j++) {
-            var infos = list[j].split(",");    //infos -- about each one
-            var tr = document.createElement("tr");
-            tableContainer.appendChild(tr);
-
-            for (var k = 0; k < infos.length; k++) {
-                var td = document.createElement("td");
-                var text = document.createTextNode(infos[k]);
-                td.appendChild(text);
-                tr.appendChild(td);
+        for (var property in repleInfo) {
+            td = document.createElement("td");
+            if (property == 'price') {
+                var text = document.createTextNode(repleInfo[property] + "元");
+            } else if (property == 'quantity') {
+                var text = document.createTextNode(repleInfo[property] + "份");
+            } else {
+                var text = document.createTextNode(repleInfo[property]);
             }
-
-            //create Button optional
-            if (i == 1) {
-                var td = document.createElement("td");
-                var replenishInput = createInput("replenishInput")
-                td.appendChild(replenishInput);
-                tr.appendChild(td);
-
-                td = document.createElement("td");
-                var replenishBtn = createBtn("replenishBtn");
-                td.appendChild(replenishBtn);
-                tr.appendChild(td);
-            }
-            
+            td.appendChild(text);
+            tr.appendChild(td);
         }
+        td = document.createElement("td");
+        td.appendChild(createInput("replenishInput"));
+        tr.appendChild(td);
+        td = document.createElement("td");
+        td.appendChild(createBtn("replenishBtn"));
+        tr.appendChild(td);
     }
 }
 
@@ -169,7 +197,7 @@ function operationBtnFunc() {
     }
 
     /*
-    url = '/admin/product_building'
+    url = "/admin/product_building"
     
     request = createRequest();
     if (request == null) {

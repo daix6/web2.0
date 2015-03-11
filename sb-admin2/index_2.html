@@ -68,10 +68,10 @@
         <div class="content">
             <!-- Tab Navigation -->
             <ul id="myTab" class="nav nav-tabs">
-                <li class="active">
+                <li class="active" id="li_orders">
                     <a href="#orders" data-toggle="tab">订单</a>
                 </li>
-                <li>
+                <li id="li_replenishment">
                     <a href="#replenishment" data-toggle="tab">补货</a>
                 </li>
                 <li class="dropdown">
@@ -79,10 +79,10 @@
                          data-toggle="dropdown">销售总额 <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="total">
-                        <li>
+                        <li id="li_all">
                             <a href="#all" tabindex="-1" data-toggle="tab">所有楼栋</a>
                          </li>
-                         <li>
+                         <li id="li_one">
                             <a href="#one" tabindex="-1" data-toggle="tab">各个楼栋</a>
                          </li>
                     </ul>
@@ -112,7 +112,7 @@
                                                     <th>订单状态</th>
                                                 </tr>
                                             </thead>
-                                            <tbody class="toDelete" id="orders_table_body">
+                                            <tbody id="orders_table_body">
                                             </tbody>
                                         </table>
                                     </td>
@@ -136,13 +136,16 @@
                                         <table class="table" style="margin-bottom: 0px">
                                             <thead>
                                                 <tr>
+                                                    <th>商品编号</th>
+                                                    <th>商品名称</th>
                                                     <th>商品信息</th>
+                                                    <th>商品价格</th>
                                                     <th>现有数量</th>
                                                     <th>补货个数</th>
                                                     <th>提交</th>
                                                 </tr>
                                             </thead>
-                                            <tbody class="toDelete" id="replenishment_table_body">
+                                            <tbody id="replenishment_table_body">
                                             </tbody>
                                         </table>
                                     </td>
@@ -163,7 +166,7 @@
                                     <th>销售总金额</th>
                                 </tr>
                             </thead>
-                            <tbody class="toDelete" id="all_table_body">
+                            <tbody id="all_table_body">
                             </tbody>
                         </table>
                     </div>      
@@ -181,7 +184,7 @@
                                     <th>销售总额</th>
                                 </tr>
                             </thead>
-                            <tbody class="toDelete" id="one_table_body">
+                            <tbody id="one_table_body">
                             </tbody>
                         </table>
                     </div>      
@@ -248,15 +251,11 @@
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="js/sb-admin-2.js"></script>
+    <script type="text/javascript" src="js/json2.js"></script>
+    <script type="text/javascript" src="js/sb-admin-2.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/index_2.js"></script>
 
-    <script src="js/utils.js"></script>
-    <script src="js/index_2.js"></script>
-    <script>
-        $(function () { $('#myModal').modal({
-            keyboard: true
-        })});
-    </script>
 
 </body>
 
