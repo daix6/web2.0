@@ -1,78 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+  <title>Bootstrap-select test page</title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="">
+  <meta charset="utf-8">
 
-    <title>Bootstrap 实例 - 标签页（Tab）插件事件</title>
-    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-select.css">
 
-    <script src="js/index_1.js"></script>
-       <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Custom CSS -->
-    <link href="css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+  <style>
+    body {
+      padding-top: 70px;
+    }
+  </style>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-select.js"></script>
+  <script src="js/mindmup-editabletable.js"></script>
+  <script src="js/numeric-input-example.js"></script>
+  <script src="js/index_1.js"></script>
+ 
 
 </head>
-
 <body>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
-            </div>
-            <!-- /.navbar-header -->
-
-            <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-            <!-- /.navbar-static-side -->
-        </nav>
-
-        <div id="page-wrapper">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Bootstrap-select usability tests</a>
+    </div>
+  </div>
+</nav>
+<div id="page-wrapper">
             <hr>
             <ul id="myTab" class="nav nav-tabs">
-                    <li class="active"><a href="#total" data-toggle="tab">销售总额</a></li>
                     <li><a href="#sale" data-toggle="tab">销售额</a></li>
                     <li class="dropdown">
                         <a href="#" id="myTabDrop1" class="dropdown-toggle" 
@@ -98,168 +58,259 @@
                             促销信息修改</a>
                     </li>
             </ul>
+</div>
 
-        <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade in active" id="total">
-                <p>销售总额</p>
-            </div>
-        <div class="tab-pane fade" id="sale">
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="navbar-header">
-                    <span class="navbar-brand">信息选择</span>
-                </div>
-                <div>
-                    <form class="navbar-form navbar-left" role="form" action="/changeSchool">
-                        <select class="form-control">
-                            <option>选择需要查看的学校</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                        <select class="form-control">
-                            <option>选择需要查看的楼栋</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                        <select class="form-control">
-                            <option>选择需要查看的月份</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                        <button type="submit" class="btn btn-default" id="myTab">提交</button>
-                    </form>    
-                </div>
-            </nav>
-        </div>
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade in active" id="sale">
+   <div class="container">
+   <hr>
+   <form class="form-inline">
+     <div class="form-group">
+       <select id="school_id" class="selectpicker" data-live-search="true" title="输入学校" onchange="check(this.id);">
+         <option selected = "selected" value = -1>请选择学校</option>
+         <option value = >所有学校</option>
+         <option>中山大学</option>
+         <option>华南理工大学</option>
+         <option>广东外语外贸大学</option>
+         <option>暨南大学</option>
+         <option>中山大学南方学院</option>
+       </select>
+       <select id="building_id" class="selectpicker" data-live-search="true" title="输入楼栋" disabled="disabled" onchange="check(this.id);">
+         <option selected = "selected" value = -1>请选择楼栋</option>
+         <option>至善园4号</option>
+         <option>至善园7号</option>
+         <option>至善园8号</option>
+         <option>至善园9号</option>
+         <option>至善园10号</option>
+       </select>
+       <select id="year_id" class="selectpicker" data-live-search="false" title="输入年份" onchange="check(this.id);">
+         <option selected = "selected" value = -1>请选择年份</option>
+         <option>2010-2011</option>
+         <option>2011-2012</option>
+         <option>2012-2013</option>
+         <option>2013-2014</option>
+         <option>2014-2015</option>
+       </select>
+       <select id="season_id" class="selectpicker" data-live-search="false" title="输入季度" disabled="disabled" onchange="check(this.id);">
+         <option selected = "selected" value = -1>请选择季度</option>
+         <option>总季度</option>
+         <option>第一季度</option>
+         <option>第二季度</option>
+         <option>第三季度</option>
+       </select>
+        <select id="month_id" class="selectpicker" data-live-search="false" title="输入月份" disabled="disabled" onchange="check(this.id);">
+         <option selected = "selected" value = -1>请选择月份</option>
+         <option>一月</option>
+         <option>二月</option>
+         <option>三月</option>
+         <option>四月</option>
+         <option>五月</option>
+         <option>六月</option>
+         <option>七月</option>
+         <option>八月</option>
+         <option>九月</option>
+         <option>十月</option>
+         <option>十一月</option>
+         <option>十二月</option>
+       </select>
+     </div>
+     <hr>
+     <button type="submit" class="btn btn-default" id="myTab" onclick = "showData()">查询</button>
+   </form>
+   <br>
+   <form action="\excel">
+   <button type="submit" class="btn btn-default" id="myTab">表格导出</button>
+ </form>
+ </div>
+</div>
 
-        <div class="tab-pane fade" id="school">
-            <form name="school" method="post" action="">
-　　        	<select id="schoolsSelect" name="keywords" size="10" onchange="watch_sel(this.form)"></select><br>
-　　 			<input type="text" name="word" /><br />
-　　 			<input type="button" value="增加" onclick="watch_add(this.form);" />
-　　 			<input type="button" value="修改" onclick="watch_mod(this.form);" />
-　　 			<input type="button" value="删除" onclick="watch_del(this.form);" />
-　　 		</form>
-        </div>
-                        <!-- 主管 -->
-        <div class="tab-pane fade" id="manager">
-           <form name="manager" method="post" action="" class="form-inline" role="form">
-　　        	<select id="managersSelect" name="keywords" size="10" onchange="watch_sel(this.form)"></select><br>
-　　 				<div class="form-group">
-      					<input type="text" class="form-control" name="word" 
-         					placeholder="账号" />
-      					<input type="text" class="form-control" name="word" 
-         					placeholder="密码" />
-         				<input type="text" class="form-control" name="word" 
-         					placeholder="名称" />
-         				<input type="text" class="form-control" name="word" 
-         					placeholder="联系方式" />
-   					</div>
-　　 			<input type="button" value="增加" onclick="watch_add(this.form);" />
-　　 			<input type="button" value="修改" onclick="watch_mod(this.form);" />
-　　 			<input type="button" value="删除" onclick="watch_del(this.form);"  />
-　　 		</form>
-        </div>
-        <!-- 楼栋 -->
-        <div class="tab-pane fade" id="building">
-            <form name="building" method="post" action="" class="form-inline" role="form">
-　　        	<select id="buildingsSelect" name="keywords" size="10" onchange="watch_sel(this.form)"></select><br>
-　　 			<div class="form-group">
-                    <input type="text" class="form-control" name="word" 
-                        placeholder="楼栋" />
-                    <input type="text" class="form-control" name="word" 
-                        placeholder="主管" />
-                </div>
-　　 			<input type="button" value="增加" onclick="watch_add(this.form);" />
-　　 			<input type="button" value="修改" onclick="watch_mod(this.form);" />
-　　 			<input type="button" value="删除" onclick="watch_del(this.form);" />
-　　 		</form>
-        </div>
-        <!-- 楼主 -->
-        <div class="tab-pane fade" id="host">
-            <form name="host" method="post" action="" class="form-inline" role="form">
-　　        	<select id="hostsSelect" name="keywords" size="10" onchange="watch_sel(this.form)"></select><br>
-　　 			<div class="form-group">
-                    <input type="text" class="form-control" name="word" 
-                        placeholder="楼栋" />
-                    <input type="text" class="form-control" name="word" 
-                        placeholder="楼主" />
-                </div>
-　　 			<input type="button" value="增加" onclick="watch_add(this.form);" />
-　　 			<input type="button" value="修改" onclick="watch_mod(this.form);" />
-　　 			<input type="button" value="删除" onclick="watch_del(this.form);" />
-　　 		</form>
-        </div>
-        <div class="tab-pane fade" id="catagory">
-            <form name="catagory" method="post" action="" class="form-inline" role="form">
-　　        	<select id="catagoriesSelect" name="keywords" size="10" onchange="watch_sel(this.form)"></select><br>
-　　 			<div class="form-group">
+   <div class="tab-pane fade" id="manager">
+    <div class="container">
+      <hr>
+      <form class="form-inline" name="manageX">
+     <div class="form-group">
+       <select id="school_idX" class="selectpicker" data-live-search="true" title="输入学校" onchange="check(this.id);">
+         <option selected = "selected" value = -1>请选择学校</option>
+         <option value = >所有学校</option>
+         <option>中山大学</option>
+         <option>华南理工大学</option>
+         <option>广东外语外贸大学</option>
+         <option>暨南大学</option>
+         <option>中山大学南方学院</option>
+       </select>
+       <input type="text" class="form-control" name="word" placeholder="姓名"/>
+       <input type="text" class="form-control" name="word" placeholder="账号"/>
+       <input type="text" class="form-control" name="word" placeholder="密码"/>
+       <input type="text" class="form-control" name="word" placeholder="联系方式"/>
+     </div>
+     <hr>
+     <input type="button" value="添加" onclick="add(this.form);" class="btn btn-default" />
+   </form>
+    </div>
+
+    <hr>
+      <div class="hero-unit">
+          <table name="mainTable" id="manageX" class="table table-striped" style="width: 80%; margin: 50px 0 0 10%">
+            <thead><tr><th>学校</th><th>主管名称</th><th>账号</th><th>密码</th><th>联系方式</th></tr></thead>
+            <tbody>
+              <tr><td>中山大学</td><td>戴旋</td><td>2222</td><td>123</td><td>0</td><td>
+                <input type="button" value="确认" class="btn btn-default" />
+                <input type="button" value="删除" class="btn btn-default" onclick="deleteRow(this)" />
+                <input type="button" value="撤销" class="btn btn-default" /></td></tr>
+              <tr><td>暨南大学</td><td>凳子</td><td>240</td><td>1123</td><td>0</td><td>
+                <input type="button" value="确认" class="btn btn-default" />
+                <input type="button" value="删除" class="btn btn-default" onclick="deleteRow(this)" />
+                <input type="button" value="撤销" class="btn btn-default" /></td></tr>
+              <tr><td>华南理工大学</td><td>板子</td><td>540</td><td>31231</td><td>0</td><td>
+                <input type="button" value="确认" class="btn btn-default" />
+                <input type="button" value="删除" class="btn btn-default" onclick="deleteRow(this)" />
+                <input type="button" value="撤销" class="btn btn-default" /></td></tr>
+              <tr><td>广州大学</td><td>桌子</td><td>200</td><td>123132</td><td>0</td><td>
+                <input type="button" value="确认" class="btn btn-default" />
+                <input type="button" value="删除" class="btn btn-default" onclick="deleteRow(this)" />
+                <input type="button" value="撤销" class="btn btn-default" /></td></tr>
+              <tr><td>广州工业大学</td><td>椅子</td><td>240</td><td>123</td><td>0</td><td>
+                <input type="button" value="确认" class="btn btn-default" />
+                <input type="button" value="删除" class="btn btn-default" onclick="deleteRow(this)" />
+                <input type="button" value="撤销" class="btn btn-default" /></td></tr>
+              <tr><td>广东外语外贸大学</td><td>宅男</td><td>240</td><td>1512</td><td>0</td><td>
+                <input type="button" value="确认" class="btn btn-default" />
+                <input type="button" value="删除" class="btn btn-default" onclick="deleteRow(this)" />
+                <input type="button" value="撤销" class="btn btn-default" /></td></tr>
+            </tbody>
+          </table>
+      </div>
+   </div>
+   <div class="tab-pane fade" id="school">
+    <div class="container">
+      <hr>
+      <form name="schoolX" method="post" action="" class="form-inline" role="form">
+                    <div class="form-group">
+　　               <input type="text" class="form-control" name="word" placeholder="学校"/>
+                    </div>
+　　               <input type="button" value="增加" onclick="add(this.form);" class="btn btn-default" />
+　　    </form>
+      </div>
+      <div class="hero-unit" style="width: 40%; margin: 50px 0 0 10%">
+          <table name="mainTable" id="schoolX" class="table table-striped">
+            <thead><tr><th>学校</th><th>操作</th></tr></thead>
+            <tbody>
+              <tr><td>中山大学</td><td>
+                <input type="button" value="确认" class="btn btn-default" />
+                <input type="button" value="删除" class="btn btn-default" onclick="deleteRow(this)" />
+                <input type="button" value="撤销" class="btn btn-default" /></td></tr>
+              <tr><td>华南理工大学</td><td>
+                <input type="button" value="确认" class="btn btn-default" />
+                <input type="button" value="删除" class="btn btn-default" onclick="deleteRow(this)" />
+                <input type="button" value="撤销" class="btn btn-default" /></td></tr>
+              <tr><td>广东外语外贸大学</td><td>
+                <input type="button" value="确认" class="btn btn-default" />
+                <input type="button" value="删除" class="btn btn-default" onclick="deleteRow(this)" />
+                <input type="button" value="撤销" class="btn btn-default" /></td></tr>
+              <tr><td>暨南大学</td><td>
+                <input type="button" value="确认" class="btn btn-default" />
+                <input type="button" value="删除" class="btn btn-default" onclick="deleteRow(this)" />
+                <input type="button" value="撤销" class="btn btn-default" /></td></tr>
+              <tr><td>广东轻工职业学院</td><td>
+                <input type="button" value="确认" class="btn btn-default" />
+                <input type="button" value="删除" class="btn btn-default" onclick="deleteRow(this)" />
+                <input type="button" value="撤销" class="btn btn-default" /></td></tr>
+              <tr><td>中山大学南方大学</td><td>
+                <input type="button" value="确认" class="btn btn-default" />
+                <input type="button" value="删除" class="btn btn-default"  onclick="deleteRow(this)" />
+                <input type="button" value="撤销" class="btn btn-default" /></td></tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+      <hr>
+   <div class="tab-pane fade" id="building">
+      <div class="container">
+        <form action="" class="form-inline">
+        <select id= "schoolSelect" size="10" onchange="sel(this.form); update(this.id, this.form);" class="selectpicker" data-live-search="true">
+          <option selected = "selected" value = -1>请选择学校</option>
+          <option>中山大学</option>
+          <option>华南理工大学</option>
+        </select>
+        <select name="second" size="10" class="selectpicker" data-live-search="true" disabled="disabled">
+          <option value=-1>请选择楼栋</option>
+        </select>
+        <input type="button" value="添加" onclick="add(this.form);" class="btn btn-default" />
+      </form>
+      </div>
+   </div>
+   <div class="tab-pane fade" id="host">
+      <div class="container">
+        <form action="" class="form-inline">
+        <select id= "schoolSelect" size="10" onchange="sel(this.form)" class="selectpicker" data-live-search="true">
+          <option selected = "selected" value = -1>请选择学校</option>
+          <option>中山大学</option>
+          <option>华南理工大学</option>
+        </select>
+        <input type="button" value="查询" onclick="add(this.form);" class="btn btn-default" />
+      </form>
+    </div>
+  </div>
+   <div class="tab-pane fade" id="catagory">
+      <div class="container">
+      <form name="catagory" method="post" action="" class="form-inline" role="form">
+　　      <div class="form-group">
                     <input type="text" class="form-control" name="word" 
                         placeholder="类别" />
                     <input type="text" class="form-control" name="word" 
                         placeholder="二级类别" />
                 </div>
-　　 			<input type="button" value="增加" onclick="watch_add(this.form);" />
-　　 			<input type="button" value="修改" onclick="watch_mod(this.form);" />
-　　 			<input type="button" value="删除" onclick="watch_del(this.form);" />
-　　 		</form>
-        </div>
-        <!--货品 -->
-        <div class="tab-pane fade" id="cargo">
-            <form name="cargo" method="post" action="" class="form-inline" role="form">
-　　        	<select id="cargosSelect" name="keywords" size="10" onchange="watch_sel(this.form)"></select><br>
-　　 			<div class="form-group">
+　　      <input type="button" value="增加" onclick="add(this.form);" class="btn btn-default" />
+　　    </form>
+   </div>
+ </div>
+    <div class="tab-pane fade" id="cargo">
+      <div class="container">
+        <form action="" class="form-inline">
+        <select id= "cargoSelect" size="10" onchange="sel(this.form); update(this.id, this.form);" class="selectpicker" data-live-search="true">
+          <option selected = "selected" value = -1>请选择类别</option>
+          <option>交通</option>
+          <option>娱乐</option>
+        </select>
+        <select name="second" size="10" class="selectpicker" data-live-search="true" disabled="disabled">
+          <option value=-1>请选择二级类别</option>
+        </select>
+        <div class="form-group">
                     <input type="text" class="form-control" name="word" 
                         placeholder="名字" />
                     <input type="text" class="form-control" name="word" 
-                        placeholder="类别" />
-                    <input type="text" class="form-control" name="word" 
-                        placeholder="二级类别" />
-                    <input type="text" class="form-control" name="word" 
                         placeholder="单价" />
                 </div>
+                <br><br>
                 <div class="form-group">
-                    <input type="file" id="inputfile">
+                    <input type="file" id="inputfile" class="btn btn-default">
                 </div>
-　　 			<input type="button" value="增加" onclick="watch_add(this.form);" />
-　　 			<input type="button" value="修改" onclick="watch_mod(this.form);" />
-　　 			<input type="button" value="删除" onclick="watch_del(this.form);" />
-　　 		</form>
-        </div>
-        <!-- 促销 -->
-        <div class="tab-pane fade" id="promotion">
-           <form name="promotion" method="post" action="" class="form-inline" role="form">
+        <input type="button" value="添加"  class="btn btn-default" />
+      </form>
+      </div>
+   </div>
+    <div class="tab-pane fade" id="promotion">
+     <div class="container">
+      <form name="promotion" method="post" action="" class="form-inline" role="form">
                 <div class="form-group">
-                    <input type="file" id="inputfile">
+                    <input type="file" id="inputfile" class="btn btn-default">
                 </div>
-　　 			<input type="button" value="提交" onclick="watch_submit(this.form);" />
-　　 			<input type="button" value="删除" onclick="watch_del(this.form);" />
-　　 		</form>
-    </div>
+　　      <input type="button" value="提交" onclick="submit(this.form);" class="btn btn-default" />
+　　    </form>
+       </div>
+   </div>
+</div>
+
+<div class="container">
+  <hr>
+</div>
 
 <script>
-   $(function(){
-      $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-      // 获取已激活的标签页的名称
-      var activeTab = $(e.target).text(); 
-      // 获取前一个激活的标签页的名称
-      var previousTab = $(e.relatedTarget).text();
-      $(".active-tab span").html(activeTab);
-      $(".previous-tab span").html(previousTab);
-   });
-});
+  var length = $("table[name='mainTable']").length;  
+  for (var i = 0; i < length; ++i) {
+    $("table[name='mainTable']").editableTableWidget().numericInputExample().find('td:first').focus();
+  }
+  window.prettyPrint && prettyPrint();
 </script>
-
-    </div>
-
 </body>
-
 </html>

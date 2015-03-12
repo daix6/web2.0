@@ -11,8 +11,7 @@ function initPage() {
 
     document.getElementById("li_orders").onclick = showOrders;
     document.getElementById("li_replenishment").onclick = showReplenishment;
-    document.getElementById("li_all").onclick = showAll;
-    document.getElementById("li_one").onclick = showOne;
+    document.getElementById("li_total").onclick = showTotal;
 }
 
 function pluginsOn() {
@@ -36,9 +35,9 @@ function isArray(arg) {
 }
 
 function clearTables(text) {
-    var tables = $(text);
+    var tables = document.getElementById(text);
     while (tables.firstChild) {
-        tables.removeChild(tables[i].firstChild);
+        tables.removeChild(tables.firstChild);
     }
 }
 
@@ -70,16 +69,17 @@ function showReplenishment() {
 //    }
 }
 
-function showAll() {
+function showTotal() {
 //  if (request.readyState == 4) {
 //      if (request.status == 200) {
             //refresh the orders and stocks tables
             var text = '{"code": 0, "data": {"buildings": [{"id": 1, "name": "至善园1号"}, {"id": 2, "name": "至善园2号"}], "orders": [{"released_time": 1425981398, "receiver_info": {"name": "张三", "location": "至善园3号", "phone": "123456"}, "money": 12.3, "status": "uncompleted"}, {"released_time": 1425933398, "receiver_info": {"name": "张四", "location": "至善园4号", "phone": "111111"}, "money": 15.3, "status": "completed"}], "inventory": [{"id": 1234, "name": "炒饭", "description": "炒饭", "price": 12.3, "quantity": 120}, {"id": 1254, "name": "炒菜", "description": "炒菜", "price": 15.3, "quantity": 45}], "total_sales": {"amount": 200, "money": 142324.5}}}'; //text = request.responseText
             // unix时间戳->normal：先 var unixTimestamp = new Date(Unix timestamp * 1000) 然后 commonTime = unixTimestamp.toLocaleString()
             // normal->unix时间戳：var commonTime = new Date(Date.UTC(year, month - 1, day, hour, minute, second))
-            clearTables("all_table_body"); //clear the body content in tables
+            clearTables("total_table_body"); //clear the body content in tables
+            clearTables("every_table_body");
             var json = JSON.parse(text);
-            InsertRepleContent(json);
+            InsertTotalContent(json);
 //      }
 //    } 
 }
@@ -158,6 +158,10 @@ function InsertRepleContent(json) {
     }
 }
 
+function InsertTotalContent() {
+
+}
+
 function createBtn(className) {
     var btn = document.createElement("button");
     var text;
@@ -184,16 +188,22 @@ function createInput(className) {
     return input;
 }
 
-function operationBtnFunc() {
-    var amount = this.parentNode.parentNode.childNodes[2].firstChild.value;
+function isDigital(str) {
+    if (str.match(/^\d+$/) != null) return true;
+    return false;
+}
 
-    if (amount == "") {
-        alert("Please input a valid number");
+function operationBtnFunc() {
+    var amount = this.parentNode.parentNode.childNodes[5].firstChild.value;
+
+    if (amount == "" || !isDigital(amount)) {
+        alert("Please input a valid positive number");
+        this.parentNode.parentNode.childNodes[5].firstChild.value = "";
     } else {
-        var origin = parseInt(this.parentNode.parentNode.childNodes[1].firstChild.nodeValue);
+        var origin = parseInt(this.parentNode.parentNode.childNodes[4].firstChild.nodeValue.replace("份", ""));
         origin = origin + parseInt(amount);
-        this.parentNode.parentNode.childNodes[1].firstChild.nodeValue = origin;
-        this.parentNode.parentNode.childNodes[2].firstChild.value = "";
+        this.parentNode.parentNode.childNodes[4].firstChild.nodeValue = origin+"份";
+        this.parentNode.parentNode.childNodes[5].firstChild.value = "";
     }
 
     /*
@@ -229,5 +239,7 @@ function buildingChoose() {
         document.getElementById("build1").innerHTML = this.innerHTML;
     } else if (this.className.indexOf("tab2") >= 0) {
         document.getElementById("build2").innerHTML = this.innerHTML;
+    } else if (this.className.indexOf("tab3") >= 0) {
+        document.getElementById("build3").innerHTML = this.innerHTML;
     }
 }
