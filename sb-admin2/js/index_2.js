@@ -2,16 +2,15 @@ window.onload = initPage();
 
 // initialize the page
 function initPage() {
-    // bootstrap plugins initilization
     pluginsOn();
-    //refreshPerMin();
-    showOrders(); //testing
+    showOrders();
 
     $(".chooseBuild").bind("click", buildingChoose);
 
     document.getElementById("li_orders").onclick = showOrders;
     document.getElementById("li_replenishment").onclick = showReplenishment;
     document.getElementById("li_total").onclick = showTotal;
+    document.getElementById("li_every").onclick = showEvery;
 }
 
 function pluginsOn() {
@@ -42,49 +41,98 @@ function clearTables(text) {
 }
 
 function showOrders() {
-//  if (request.readyState == 4) {
-//      if (request.status == 200) {
-            //refresh the orders and stocks tables
-            var text = '{"code": 0, "data": {"buildings": [{"id": 1, "name": "至善园1号"}, {"id": 2, "name": "至善园2号"}], "orders": [{"released_time": 1425981398, "receiver_info": {"name": "张三", "location": "至善园3号", "phone": "123456"}, "money": 12.3, "status": "uncompleted"}, {"released_time": 1425933398, "receiver_info": {"name": "张四", "location": "至善园4号", "phone": "111111"}, "money": 15.3, "status": "completed"}], "inventory": [{"id": 1234, "name": "炒饭", "description": "炒饭", "price": 12.3, "quantity": 120}, {"id": 1254, "name": "炒菜", "description": "炒菜", "price": 15.3, "quantity": 45}], "total_sales": {"amount": 200, "money": 142324.5}}}'; //text = request.responseText
-            // unix时间戳->normal：先 var unixTimestamp = new Date(Unix timestamp * 1000) 然后 commonTime = unixTimestamp.toLocaleString()
-            // normal->unix时间戳：var commonTime = new Date(Date.UTC(year, month - 1, day, hour, minute, second))
-            clearTables("orders_table_body"); //clear the body content in tables
-            var json = JSON.parse(text);
-            InsertOrdersContent(json);
-//      }
-//    }
+    request = createRequest();
+
+    if (request == null) {
+        alert("Unable to create request");
+    } else {
+        var url = '/admin/level2/query?get_order_list=';
+
+        request.onreadystatechange = function() {
+            if (request.readyState == 4 && request.status == 200) {
+                var data = JSON.parse(request.responseText);
+                clearTables("orders_table_body");
+                InsertOrdersContent(data);
+            } else {
+                alert("Request was unsuccessful: " + request.status);
+            }
+        }
+
+        request.open("POST", url, true);
+        request.send("_csrf_token=" + window.sessionStorage.getItem("token"));
+    }
+    
 }
 
 function showReplenishment() {
-//  if (request.readyState == 4) {
-//      if (request.status == 200) {
-            //refresh the orders and stocks tables
-            var text = '{"code": 0, "data": {"buildings": [{"id": 1, "name": "至善园1号"}, {"id": 2, "name": "至善园2号"}], "orders": [{"released_time": 1425981398, "receiver_info": {"name": "张三", "location": "至善园3号", "phone": "123456"}, "money": 12.3, "status": "uncompleted"}, {"released_time": 1425933398, "receiver_info": {"name": "张四", "location": "至善园4号", "phone": "111111"}, "money": 15.3, "status": "completed"}], "inventory": [{"id": 1234, "name": "炒饭", "description": "炒饭", "price": 12.3, "quantity": 120}, {"id": 1254, "name": "炒菜", "description": "炒菜", "price": 15.3, "quantity": 45}], "total_sales": {"amount": 200, "money": 142324.5}}}'; //text = request.responseText
-            // unix时间戳->normal：先 var unixTimestamp = new Date(Unix timestamp * 1000) 然后 commonTime = unixTimestamp.toLocaleString()
-            // normal->unix时间戳：var commonTime = new Date(Date.UTC(year, month - 1, day, hour, minute, second))
-            clearTables("replenishment_table_body"); //clear the body content in tables
-            var json = JSON.parse(text);
-            InsertRepleContent(json);
-//      }
-//    }
+    request = createRequest();
+
+    if (request == null) {
+        alert("Unable to create request");
+    } else {
+        var url = '/admin/level2/query?get_inventory_list=';
+
+        request.onreadystatechange = function() {
+            if (request.readyState == 4 && request.status == 200) {
+                var data = JSON.parse(request.responseText);
+                clearTables("replenishment_table_body");
+                InsertOrdersContent(data);
+            } else {
+                alert("Request was unsuccessful: " + request.status);
+            }
+        }
+
+        request.open("POST", url, true);
+        request.send("_csrf_token=" + window.sessionStorage.getItem("token"));
+    }
 }
 
 function showTotal() {
-//  if (request.readyState == 4) {
-//      if (request.status == 200) {
-            //refresh the orders and stocks tables
-            var text = '{"code": 0, "data": {"buildings": [{"id": 1, "name": "至善园1号"}, {"id": 2, "name": "至善园2号"}], "orders": [{"released_time": 1425981398, "receiver_info": {"name": "张三", "location": "至善园3号", "phone": "123456"}, "money": 12.3, "status": "uncompleted"}, {"released_time": 1425933398, "receiver_info": {"name": "张四", "location": "至善园4号", "phone": "111111"}, "money": 15.3, "status": "completed"}], "inventory": [{"id": 1234, "name": "炒饭", "description": "炒饭", "price": 12.3, "quantity": 120}, {"id": 1254, "name": "炒菜", "description": "炒菜", "price": 15.3, "quantity": 45}], "total_sales": {"amount": 200, "money": 142324.5}}}'; //text = request.responseText
-            // unix时间戳->normal：先 var unixTimestamp = new Date(Unix timestamp * 1000) 然后 commonTime = unixTimestamp.toLocaleString()
-            // normal->unix时间戳：var commonTime = new Date(Date.UTC(year, month - 1, day, hour, minute, second))
-            clearTables("total_table_body"); //clear the body content in tables
-            clearTables("every_table_body");
-            var json = JSON.parse(text);
-            InsertTotalContent(json);
-//      }
-//    } 
+    request = createRequest();
+
+    if (request == null) {
+        alert("Unable to create request");
+    } else {
+        var url = '/admin/level2/query?get_total_sales=-1';
+
+        request.onreadystatechange = function() {
+            if (request.readyState == 4 && request.status == 200) {
+                var data = JSON.parse(request.responseText);
+                clearTables("total_table_body");
+                InsertOrdersContent(data);
+            } else {
+                alert("Request was unsuccessful: " + request.status);
+            }
+        }
+
+        request.open("POST", url, true);
+        request.send("_csrf_token=" + window.sessionStorage.getItem("token"));
+    }
 }
 
-//insert the table content into the suitable table container
+function showEvery() {
+    request = createRequest();
+
+    if (request == null) {
+        alert("Unable to create request");
+    } else {
+        var url = '/admin/level2/query?get_total_sales=';
+
+        request.onreadystatechange = function() {
+            if (request.readyState == 4 && request.status == 200) {
+                var data = JSON.parse(request.responseText);
+                clearTables("every_table_body");
+                InsertOrdersContent(data);
+            } else {
+                alert("Request was unsuccessful: " + request.status);
+            }
+        }
+
+        request.open("POST", url, true);
+        request.send("_csrf_token=" + window.sessionStorage.getItem("token"));
+    }
+}
+
 function InsertOrdersContent(json) {
     var ordersDetails = json.data.orders;
     var tableContainer = document.getElementById("orders_table_body");
@@ -158,8 +206,39 @@ function InsertRepleContent(json) {
     }
 }
 
-function InsertTotalContent() {
+function InsertTotalContent(json) {
+    var allDetails = json.data.total_sales;
+    var tableContainer = document.getElementById("total_table_body");
+    var tr = document.createElement("tr");
+    tableContainer.appendChild(tr);
 
+    for (var money in allDetails) {
+        td = document.createElement("td");
+        if (money == 'amount') {
+            var text = document.createTextNode(allDetails[money] + '份')
+        } else if (money == 'money') {
+            var text = document.createTextNode(allDetails[money] + '元')
+        }
+        td.appendChild(text);
+        tr.appendChild(td);
+    }
+
+}
+
+function InsertEveryContent(json) {
+    var allDetails = json.data.total_sales;
+    var tableContainer = document.getElementById("every_table_body");
+
+    for (var money in allDetails) {
+        td = document.createElement("td");
+        if (money == 'amount') {
+            var text = document.createTextNode(allDetails[money] + '份')
+        } else if (money == 'money') {
+            var text = document.createTextNode(allDetails[money] + '元')
+        }
+        td.appendChild(text);
+        tr.appendChild(td);
+    }
 }
 
 function createBtn(className) {
@@ -205,32 +284,6 @@ function operationBtnFunc() {
         this.parentNode.parentNode.childNodes[4].firstChild.nodeValue = origin+"份";
         this.parentNode.parentNode.childNodes[5].firstChild.value = "";
     }
-
-    /*
-    url = "/admin/product_building"
-    
-    request = createRequest();
-    if (request == null) {
-        alert("Unable to create request");
-        return;
-    }
-
-    request.onreadystatechange = function() {
-        if (request.readyState == 4) {
-            if (request.status == 200) {
-                //if back-end return true, refresh
-                //else alert("操作失败");
-            }
-        }
-    };
-
-    //send data
-    sendData = "?quantity="+amount;
-
-    request.open("POST", url, true);
-    request.send(sendData);
-    alert(url + "\n" + sendData);
-    */
 }
 
 function buildingChoose() {

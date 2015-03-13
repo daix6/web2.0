@@ -74,8 +74,18 @@
                 <li id="li_replenishment">
                     <a href="#replenishment" data-toggle="tab">补货</a>
                 </li>
-                <li class="dropdown" id="li_total">
-                    <a href="#total" data-toggle="tab">当月销售总额</a>
+                <li class="dropdown">
+                    <a href="#" id="total" class="dropdown-toggle" 
+                         data-toggle="dropdown">销售总额 <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="total">
+                        <li id="li_all">
+                            <a href="#all" tabindex="-1" data-toggle="tab">所有楼栋</a>
+                         </li>
+                         <li id="li_one">
+                            <a href="#one" tabindex="-1" data-toggle="tab">各个楼栋</a>
+                         </li>
+                    </ul>
                 </li>
             </ul>
             <!-- Tab Navigation -->
@@ -145,8 +155,8 @@
                     </div>  
                 </div>
 
-                <div class="tab-pane fade" id="total">
-                    <!-- 销售总额 -->
+                <div class="tab-pane fade" id="all">
+                    <!-- 所有楼栋销售总额 -->
                     <div class="table-responsive">
                         <table class="table">
                             <caption>当月所有楼栋销售总额</caption>
@@ -159,6 +169,12 @@
                             <tbody id="total_table_body">
                             </tbody>
                         </table>
+                    </div>      
+                </div>
+
+                <div class="tab-pane fade" id="one">
+                    <!-- 各楼栋销售总额 -->
+                    <div class="table-responsive">
                         <table class="table table-bordered">
                             <caption>当月各楼栋销售总额</caption>
                             <tbody>
@@ -181,7 +197,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
+                    </div>      
                 </div>
 
 
