@@ -69,7 +69,7 @@ function showReplenishment() {
     if (request == null) {
         alert('Unable to create request');
     } else {
-        var buildId = document.getElementById('build1').firstChild.nodeValue.split('-')[0];
+        var buildId = document.getElementById('build2').firstChild.nodeValue.split('-')[0];
         var url = '/admin/level2/query?get_inventory_list=' + buildId;
 
         request.onreadystatechange = function() {
@@ -116,7 +116,7 @@ function showEvery() {
     if (request == null) {
         alert('Unable to create request');
     } else {
-        var buildId = document.getElementById('build1').firstChild.nodeValue.split('-')[0];
+        var buildId = document.getElementById('build3').firstChild.nodeValue.split('-')[0];
         var url = '/admin/level2/query?get_total_sales=' + buildId;
 
         request.onreadystatechange = function() {

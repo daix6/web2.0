@@ -1,2 +1,0 @@
-<h2>Just for testing ajax</h2>
-<p style="font-size: 20px; color: blue">QAQ</p>
